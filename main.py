@@ -29,7 +29,7 @@ def main():
 
     # Process topics
     tracking_data = {}
-    for article in tqdm(articles[4:], desc="Processing articles"):
+    for article in tqdm(articles, desc="Processing articles"):
         article_id = article.get('docid')
         article_json_str = json.dumps({k: v for k, v in article.items() if k != 'docid'}, indent=4)
         
@@ -115,7 +115,7 @@ def main():
         per_article_tracking_data['report_generation'] = report_json
 
         tracking_data[article_id] = per_article_tracking_data
-        with open('tracking_data.json', 'w', encoding='utf-8') as f:
+        with open('output/tracking_data.json', 'w', encoding='utf-8') as f:
             json.dump(tracking_data, f, indent=4, ensure_ascii=False)
         
 
