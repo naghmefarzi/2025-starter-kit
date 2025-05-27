@@ -49,8 +49,8 @@ Be decisive in your editing: remove filler words, simplify complex phrases, use 
 
 
 def main():
-    team_id = 'dragun-oganizers'
-    run_id_prefix = 'dragun-oganizers-starter-kit'
+    team_id = 'dragun-organizers'
+    run_id_prefix = 'dragun-organizers-starter-kit'
 
     target_article_ids = []
     with open('./data/trec-2025-dragun-topics.jsonl', 'r', encoding='utf-8') as f_in:
