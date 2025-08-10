@@ -1,3 +1,10 @@
+## Ollama Setup
+This version has been modified to work with Ollama instead of OpenAI's API.
+
+1. Install Ollama: [installation instructions]
+2. Download required models: `ollama pull <model-name>`
+3. Update `.env` configuration
+
 # TREC 2025 DRAGUN Starter Kit
 
 This repository is a starter kit for the [**TREC 2025 DRAGUN Track**](https://trec-dragun.github.io/) - *Detection, Retrieval, and Augmented Generation for Understanding News*. It provides a baseline multi-agent system to help readers evaluate the trustworthiness of online news articles. The system automatically generates investigative **questions** (for Task 1) and a well-attributed **report** (for Task 2) for each news article, using an iterative retrieval-augmented generation pipeline, overall architecture shown below. Participants can use this kit as a starting point - either by using the intermediate data or by modifying and improving components for their own approaches.
