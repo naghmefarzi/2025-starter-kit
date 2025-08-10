@@ -1,7 +1,6 @@
-import os
-from openai import AzureOpenAI
 from pydantic import BaseModel
-
+from llm_client import SafeLLMClient
+import json
 
 class QueryWithRationale(BaseModel):
     rationale: str
@@ -12,13 +11,10 @@ class QueryReasoning(BaseModel):
     queries_with_rationale: list[QueryWithRationale]
 
 
-class QueryGenerator:
+class QueryGenerator(SafeLLMClient):
+
     def __init__(self):
-        self.query_generator = AzureOpenAI(
-            api_version=os.getenv('OPENAI_API_VERSION'),
-            azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
-            api_key=os.getenv('AZURE_OPENAI_API_KEY')
-        )
+        super().__init__()
         self.key_aspects = '''\
 1. Investigate the Source:
 - Examine the publisher or author's background and reputation.
@@ -47,7 +43,18 @@ You are a professional fact-checker. Given a news article, your task is to caref
 
 {self.key_aspects}
 
-You have already generated some queries, and some document segments have been retrieved for them. However, the information obtained so far is still insufficient to assess the article's trustworthiness. Based on the previously generated questions and the retrieved segments, generate five additional queries that either address aspects not yet covered or rephrase queries that remain unanswered by the retrieved segments. For each search query you produce, you must provide a rationale clearly articulating why this particular query is important and how it contributes to your fact-checking process. Each rationale must demonstrate thoughtful analysis, critical thinking, and alignment with professional fact-checking practices.'''
+You have already generated some queries, and some document segments have been retrieved for them. However, the information obtained so far is still insufficient to assess the article's trustworthiness. Based on the previously generated questions and the retrieved segments, generate five additional queries that either address aspects not yet covered or rephrase queries that remain unanswered by the retrieved segments. For each search query you produce, you must provide a rationale clearly articulating why this particular query is important and how it contributes to your fact-checking process. Each rationale must demonstrate thoughtful analysis, critical thinking, and alignment with professional fact-checking practices.
+Return a JSON object matching this schema:
+
+{{
+    "queries_with_rationale": [
+        {{"rationale": "string", "query": "string"}},
+        {{"rationale": "string", "query": "string"}},
+        {{"rationale": "string", "query": "string"}},
+        {{"rationale": "string", "query": "string"}},
+        {{"rationale": "string", "query": "string"}}
+    ]
+}}'''
             user_input = f'''\
 Here is the news article:
 {article}
@@ -62,29 +69,42 @@ You are a professional fact-checker. Given a news article, your task is to caref
 
 {self.key_aspects}
 
-For each search query you produce, you must provide a rationale clearly articulating why this particular query is important and how it contributes to your fact-checking process. Each rationale must demonstrate thoughtful analysis, critical thinking, and alignment with professional fact-checking practices.'''
+For each search query you produce, you must provide a rationale clearly articulating why this particular query is important and how it contributes to your fact-checking process. Each rationale must demonstrate thoughtful analysis, critical thinking, and alignment with professional fact-checking practices.
+Return a JSON object matching this schema:
+
+{{
+    "queries_with_rationale": [
+        {{"rationale": "string", "query": "string"}},
+        {{"rationale": "string", "query": "string"}},
+        {{"rationale": "string", "query": "string"}},
+        ...
+    ]
+}}'''
             user_input = f'''\
 Here is the news article:
 {article}'''
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_input}
+        ]
+        try:
+            response = self.generate_structured(
+                response_model=QueryReasoning,
+                messages=messages,
+                temperature=0.3
+            )
 
-        completion = self.query_generator.beta.chat.completions.parse(
-            model='gpt-4.1',
-            messages=[
-                {'role': 'system', 'content': system_prompt},
-                {'role': 'user', 'content': user_input}
-            ],
-            temperature=0.3,
-            presence_penalty=0,
-            frequency_penalty=0,
-            response_format=QueryReasoning,
-        )
-
-        queries_with_rationale = completion.choices[0].message.parsed.queries_with_rationale
-
-        generated_queries = [(query_with_rationale.query, query_with_rationale.rationale) 
-                             for query_with_rationale in queries_with_rationale]
-
-        if len(generated_queries) < 5:
-            raise ValueError(f'[Query Generator] Only {len(queries_with_rationale)} queries were generated, but 5 are required.')
-
-        return generated_queries
+            print(f"Generated {len(response.queries_with_rationale)} queries successfully")
+            
+            generated_queries = [
+                (query_with_rationale.query, query_with_rationale.rationale)
+                for query_with_rationale in response.queries_with_rationale
+            ]
+            
+            if len(generated_queries) < 5:
+                raise ValueError(f'[Query Generator] Only {len(generated_queries)} queries were generated, but 5 are required.')
+            
+            return generated_queries
+            
+        except Exception as e:
+            raise RuntimeError(f"Query generation failed: {e}")

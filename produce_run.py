@@ -1,7 +1,7 @@
 import os
 import json
 from dotenv import load_dotenv
-from openai import AzureOpenAI
+from llm_client import llm_client 
 from pydantic import BaseModel
 
 
@@ -14,11 +14,7 @@ class Sentences(BaseModel):
 
 class ReportShortener:
     def __init__(self):
-        self.report_shortener = AzureOpenAI(
-            api_version=os.getenv('OPENAI_API_VERSION'),
-            azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
-            api_key=os.getenv('AZURE_OPENAI_API_KEY')
-        )
+        pass
     
     def shorten_report(self, sentences: str, word_count: int):
         target_words = 240  # Aim slightly below 250 to ensure we hit the target
@@ -34,19 +30,18 @@ Your task is to aggressively condense the report while:
 
 Be decisive in your editing: remove filler words, simplify complex phrases, use shorter synonyms, and eliminate redundancy. Your goal is to achieve the target word reduction in one pass.'''
         user_input = f'The report is shown below. \n{sentences}'
-        completion = self.report_shortener.beta.chat.completions.parse(
-            model='gpt-4.1',
-            messages=[
-                {'role': 'system', 'content': system_prompt},
-                {'role': 'user', 'content': user_input}
-            ],
-            temperature=0,
-            presence_penalty=0,
-            frequency_penalty=0,
-            response_format=Sentences,
-        )
-        return completion.choices[0].message.parsed
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_input}
+        ]
 
+        response = llm_client.generate_structured(
+            response_model=Sentences,
+            messages=messages,
+            temperature=0,
+        )
+
+        return response
 
 def main():
     team_id = 'dragun-organizers'

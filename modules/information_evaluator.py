@@ -1,6 +1,5 @@
-import os
-from openai import AzureOpenAI
 from pydantic import BaseModel
+from modules.base_llm_component import BaseLLMComponent
 
 
 class Evaluation(BaseModel):
@@ -8,13 +7,9 @@ class Evaluation(BaseModel):
     has_sufficient_information: bool
     
 
-class InformationEvaluator:
+class InformationEvaluator(BaseLLMComponent):
     def __init__(self):
-        self.information_evaluator = AzureOpenAI(
-            api_version=os.getenv('OPENAI_API_VERSION'),
-            azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
-            api_key=os.getenv('AZURE_OPENAI_API_KEY')
-        )
+        super().__init__("InformationEvaluator")
         self.system_prompt = f'''\
 You are a rigorous fact-checker with a skeptical mindset, tasked with evaluating the trustworthiness of news articles. You have previously generated several search queries, and the search engine has retrieved relevant information segments. Your role is to be highly critical and demanding when determining whether you have collected sufficient information to confidently evaluate the trustworthiness of the given news article.
 
@@ -38,19 +33,14 @@ Here is the news article:
 Here are the previously generated queries with retrieved segments:
 {query_retrieval_history}'''
         
-        completion = self.information_evaluator.beta.chat.completions.parse(
-            model='gpt-4.1',
-            messages=[
-                {'role': 'system', 'content': self.system_prompt},
-                {'role': 'user', 'content': user_input}
-            ],
-            temperature=0,
-            presence_penalty=0,
-            frequency_penalty=0,
-            response_format=Evaluation,
+        response = self.generate_structured_response(
+            response_model=Evaluation,
+            system_prompt=self.system_prompt,
+            user_input=user_input,
+            temperature=0
         )
 
-        evaluation_reasoning = completion.choices[0].message.parsed.evaluation_reasoning
-        has_sufficient_information = completion.choices[0].message.parsed.has_sufficient_information
+        evaluation_reasoning = response.evaluation_reasoning
+        has_sufficient_information = response.has_sufficient_information
 
         return evaluation_reasoning, has_sufficient_information

@@ -1,6 +1,5 @@
-import os
-from openai import AzureOpenAI
 from pydantic import BaseModel
+from modules.base_llm_component import BaseLLMComponent
 
 
 class Sentence(BaseModel):
@@ -13,13 +12,9 @@ class Report(BaseModel):
     sentences: list[Sentence]
 
 
-class ReportGenerator:
+class ReportGenerator(BaseLLMComponent):
     def __init__(self):
-        self.report_generator = AzureOpenAI(
-            api_version=os.getenv('OPENAI_API_VERSION'),
-            azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
-            api_key=os.getenv('AZURE_OPENAI_API_KEY')
-        )
+        super().__init__("ReportGenerator")
         self.system_prompt = f'''\
 You are a professional fact-checker and media literacy expert. Your ultimate task is to generate a well-attributed report that provides background and context to help readers assess the trustworthiness of a given news article. You have previously generated queries, retrieved relevant text segments, and formulated critical questions. Now, based on this information, you must create a comprehensive report that addresses the most important trustworthiness concerns.
 
@@ -100,19 +95,14 @@ Here are the 10 critical questions that should be addressed (in order of importa
 
 Generate a report that addresses as many of the important questions as possible using only the information available in the retrieved segments. Each sentence should be factual, well-grounded, and include appropriate citations.'''
 
-        completion = self.report_generator.beta.chat.completions.parse(
-            model='gpt-4.1',
-            messages=[
-                {'role': 'system', 'content': self.system_prompt},
-                {'role': 'user', 'content': user_input}
-            ],
-            temperature=0.1,
-            presence_penalty=0,
-            frequency_penalty=0,
-            response_format=Report,
+        response = self.generate_structured_response(
+            response_model=Report,
+            system_prompt=self.system_prompt,
+            user_input=user_input,
+            temperature=0.1
         )
 
-        sentences = completion.choices[0].message.parsed.sentences
+        sentences = response.sentences
 
         report_word_count = 0
         return_report = []

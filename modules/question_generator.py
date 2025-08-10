@@ -1,6 +1,5 @@
-import os
-from openai import AzureOpenAI
 from pydantic import BaseModel
+from modules.base_llm_component import BaseLLMComponent
 
 
 class Question(BaseModel):
@@ -12,13 +11,9 @@ class Questions(BaseModel):
     questions: list[Question]
 
 
-class QuestionGenerator:
+class QuestionGenerator(BaseLLMComponent):
     def __init__(self):
-        self.question_generator = AzureOpenAI(
-            api_version=os.getenv('OPENAI_API_VERSION'),
-            azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
-            api_key=os.getenv('AZURE_OPENAI_API_KEY')
-        )
+        super().__init__("QuestionGenerator")
         self.system_prompt = f'''\
 You are a professional fact-checker and media literacy expert. Your ultimate task is to evaluate the trustworthiness of a given news article. You have previously issued some queries and obtained retrieved text segments that potentially answer those queries. Now, based on the information obtained from those retrieved text segments, your task is to generate 10 critical and investigative questions that a thoughtful reader should ask when assessing the article's trustworthiness. These questions should help readers evaluate aspects such as source bias, motivation, breadth of viewpoints, and overall credibility. Ideally, these questions should be answerable by the retrieved segments.
 
@@ -64,19 +59,14 @@ Here is the news article:
 
 Here are the previously generated queries and the retrieved segments:
 {context}'''
-        completion = self.question_generator.beta.chat.completions.parse(
-            model='gpt-4.1',
-            messages=[
-                {'role': 'system', 'content': self.system_prompt},
-                {'role': 'user', 'content': user_input}
-            ],
-            temperature=0.1,
-            presence_penalty=0,
-            frequency_penalty=0,
-            response_format=Questions,
+        response = self.generate_structured_response(
+            response_model=Questions,
+            system_prompt=self.system_prompt,
+            user_input=user_input,
+            temperature=0.1
         )
 
-        questions = completion.choices[0].message.parsed.questions
+        questions = response.questions
 
         generated_questions = []
         for question in questions:

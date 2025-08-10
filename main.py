@@ -1,18 +1,35 @@
 import json
+import logging
 from tqdm import tqdm
 from dotenv import load_dotenv
+from config import CONFIG
+from llm_client import llm_client
 from modules.query_generator import QueryGenerator
 from modules.segment_retriever import SegmentRetriever
 from modules.information_evaluator import InformationEvaluator
 from modules.question_generator import QuestionGenerator
 from modules.report_generator import ReportGenerator
 
+# Configure logging
+logging.basicConfig(
+    level=logging.DEBUG if CONFIG.debug_mode else logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
 
 def main():
-    max_query_iterations = 5
+    max_query_iterations = CONFIG.max_query_iterations
+    
+    # Health check for LLM backend
+    if not llm_client.health_check():
+        logger.error("LLM backend health check failed. Please ensure your LLM backend is running.")
+        return
+    
+    logger.info(f"Using Ollama with model: {CONFIG.model_name}")
+    logger.info(f"Team ID: {CONFIG.team_id}, Run ID: {CONFIG.run_id}")
 
     # Read topics
     articles = []
