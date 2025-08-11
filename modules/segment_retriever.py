@@ -75,7 +75,7 @@ Here are the 20 candidate segments, ranked by estimated relevance (highest to lo
 {json.dumps(top_segments, indent=4)}
 
 Please select the (at most) 3 most relevant segments from the list above to answer the query.
-Output should be ONLY a list of (at most) 3 most relevant segments starting with 'msmarco_v2.1_doc_':
+Output should be ONLY a list of (at most) 3 most relevant segments starting with 'msmarco_v2.1_doc_' and has '#' in it:
 [segment_id, segment_id, segment_id]'''
 
         messages = [
@@ -94,16 +94,32 @@ Output should be ONLY a list of (at most) 3 most relevant segments starting with
 
         llm_selected_segment_ids = completion
 
-        # Validate selected segment_ids are in the top_segments list
-        provided_ids = set(top_segment_ids)
-        for segment_id in llm_selected_segment_ids.segment_ids:
-            if segment_id not in provided_ids:
-                raise ValueError(f'Selected segment_id: {segment_id} is not in the provided list of candidate segments.')
+        # Enhanced validation with fallbacks
+        provided_ids_set = set(top_segment_ids)
+        validated_segment_ids = []
 
+        for segment_id in llm_selected_segment_ids.segment_ids:
+            if segment_id in provided_ids_set:
+                validated_segment_ids.append(segment_id)
+            else:
+                print(f"Warning: LLM hallucinated segment_id: {segment_id}")
+                # Use fallback: pick the first available ID not already selected
+                available_ids = [vid for vid in top_segment_ids if vid not in validated_segment_ids]
+                if available_ids:
+                    fallback_id = available_ids[0]
+                    print(f"Using fallback: {fallback_id}")
+                    validated_segment_ids.append(fallback_id)
+
+        # Ensure we have at least one segment
+        if not validated_segment_ids:
+            print("Warning: No valid segments selected, using top segment by rerank score")
+            validated_segment_ids = [top_segment_ids[0]]
+
+        # Build final results using validated IDs
         llm_selected_results = []
         for i, result in enumerate(results):
             results[i]['reranker_rank'] = i + 1
-            if results[i]['segment_id'] in llm_selected_segment_ids.segment_ids:
+            if results[i]['segment_id'] in validated_segment_ids:
                 llm_selected_results.append(results[i])
 
         return results, llm_selected_results

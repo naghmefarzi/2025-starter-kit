@@ -155,6 +155,7 @@ class SafeLLMClient:
             wrapped_object = {"segment_ids": segments}
             return json.dumps(wrapped_object)
         
+
         # Return as-is if no JSON detected
         return content
 

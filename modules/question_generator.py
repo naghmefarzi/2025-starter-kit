@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from modules.base_llm_component import BaseLLMComponent
+from llm_client import SafeLLMClient
 
 
 class Question(BaseModel):
@@ -11,11 +11,11 @@ class Questions(BaseModel):
     questions: list[Question]
 
 
-class QuestionGenerator(BaseLLMComponent):
+class QuestionGenerator(SafeLLMClient):
     def __init__(self):
-        super().__init__("QuestionGenerator")
+        super().__init__()
         self.system_prompt = f'''\
-You are a professional fact-checker and media literacy expert. Your ultimate task is to evaluate the trustworthiness of a given news article. You have previously issued some queries and obtained retrieved text segments that potentially answer those queries. Now, based on the information obtained from those retrieved text segments, your task is to generate 10 critical and investigative questions that a thoughtful reader should ask when assessing the article's trustworthiness. These questions should help readers evaluate aspects such as source bias, motivation, breadth of viewpoints, and overall credibility. Ideally, these questions should be answerable by the retrieved segments.
+You are a professional fact-checker and media literacy expert. Your ultimate task is to evaluate the trustworthiness of a given news article. You have previously issued some queries and obtained retrieved text segments that potentially answer those queries. Now, based on the information obtained from those retrieved text segments, your task is to generate EXACTLY 10 critical and investigative questions that a thoughtful reader should ask when assessing the article's trustworthiness. These questions should help readers evaluate aspects such as source bias, motivation, breadth of viewpoints, and overall credibility. Ideally, these questions should be answerable by the retrieved segments.
 
 Follow these key principles for question generation:
 
@@ -43,12 +43,14 @@ Follow these key principles for question generation:
 - Inquire about related events or developments that might provide additional context.
 
 Requirements for each question:
+- Should start with a verb and end with a question mark.
 - Maximum 300 characters long.
 - Should require information outside of the article (i.e., avoid questions that the article itself can answer), such as search engine results.
 - Focus on a single topic (avoid compound questions).
 - Be specific to the article's content, not overly general.
 - Be actionable for a reader to investigate.
 - Ranked from most to least important for assessing trustworthiness.
+- Keep the rationale concise.
 
 For each question, first provide a clear rationale explaining why it's important for evaluating the article's trustworthiness and how it contributes to media literacy.'''
         
@@ -58,11 +60,26 @@ Here is the news article:
 {article}
 
 Here are the previously generated queries and the retrieved segments:
-{context}'''
-        response = self.generate_structured_response(
+{context}
+Return a JSON object containing EXACTLY 10 questions matching this schema:
+
+{{
+    "questions": [
+        {{"rationale": ..., "question_text": ...}},
+        {{"rationale": ..., "question_text": ...}},
+        {{"rationale": ..., "question_text": ...}},
+        ...
+
+    ]
+}}'''
+        
+        messages = [
+            {"role": "system", "content": self.system_prompt},
+            {"role": "user", "content": user_input}
+        ]
+        response = self.generate_structured(
             response_model=Questions,
-            system_prompt=self.system_prompt,
-            user_input=user_input,
+            messages=messages,
             temperature=0.1
         )
 

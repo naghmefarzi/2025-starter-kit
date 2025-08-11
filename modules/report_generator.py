@@ -1,6 +1,5 @@
 from pydantic import BaseModel
-from modules.base_llm_component import BaseLLMComponent
-
+from llm_client import SafeLLMClient
 
 class Sentence(BaseModel):
     rationale: str
@@ -12,9 +11,9 @@ class Report(BaseModel):
     sentences: list[Sentence]
 
 
-class ReportGenerator(BaseLLMComponent):
+class ReportGenerator(SafeLLMClient):
     def __init__(self):
-        super().__init__("ReportGenerator")
+        super().__init__()
         self.system_prompt = f'''\
 You are a professional fact-checker and media literacy expert. Your ultimate task is to generate a well-attributed report that provides background and context to help readers assess the trustworthiness of a given news article. You have previously generated queries, retrieved relevant text segments, and formulated critical questions. Now, based on this information, you must create a comprehensive report that addresses the most important trustworthiness concerns.
 
@@ -93,9 +92,18 @@ Here are your previously issued queries with their retrieved text segments:
 Here are the 10 critical questions that should be addressed (in order of importance):
 {questions}
 
-Generate a report that addresses as many of the important questions as possible using only the information available in the retrieved segments. Each sentence should be factual, well-grounded, and include appropriate citations.'''
+Generate a report that addresses as many of the important questions as possible using only the information available in the retrieved segments. Each sentence should be factual, well-grounded, and include appropriate citations.
+{{
+    "sentences": [
+        {{"rationale": ..., "sentence_text": ..., "citations": ...}},
+        {{"rationale": ..., "sentence_text": ..., "citations": ...}},
+        {{"rationale": ..., "sentence_text": ..., "citations": ...}},
+        ...
 
-        response = self.generate_structured_response(
+    ]
+}}'''
+
+        response = self.generate_structured(
             response_model=Report,
             system_prompt=self.system_prompt,
             user_input=user_input,
