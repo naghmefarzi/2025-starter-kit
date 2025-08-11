@@ -48,11 +48,11 @@ Return a JSON object matching this schema:
 
 {{
     "queries_with_rationale": [
-        {{"rationale": "string", "query": "string"}},
-        {{"rationale": "string", "query": "string"}},
-        {{"rationale": "string", "query": "string"}},
-        {{"rationale": "string", "query": "string"}},
-        {{"rationale": "string", "query": "string"}}
+        {{"rationale": ..., "query": ...}},
+        {{"rationale": ..., "query": ...}},
+        {{"rationale": ..., "query": ...}},
+        ...
+
     ]
 }}'''
             user_input = f'''\
@@ -74,9 +74,9 @@ Return a JSON object matching this schema:
 
 {{
     "queries_with_rationale": [
-        {{"rationale": "string", "query": "string"}},
-        {{"rationale": "string", "query": "string"}},
-        {{"rationale": "string", "query": "string"}},
+        {{"rationale": ..., "query": ...}},
+        {{"rationale": ..., "query": ...}},
+
         ...
     ]
 }}'''

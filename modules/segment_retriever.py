@@ -18,7 +18,7 @@ class SegmentRetriever:
         self.searcher.set_bm25(0.9, 0.4)
         self.searcher.set_rm3(10, 10, 0.5)
         self.reranker = CrossEncoder('cross-encoder/ms-marco-MiniLM-L6-v2', cache_folder='../cache')
-        self.selector_top_k = 20
+        self.selector_top_k = 10
 
     def search(self, query: str, article: str, exclude_docids: list[str]):
         hits = self.searcher.search(query, k=self.bm25rm3_top_k)
@@ -26,15 +26,16 @@ class SegmentRetriever:
         for i, hit in enumerate(hits):
             if hits[i].docid.split('#')[0] not in exclude_docids:
                 segment_json = json.loads(Document(hit.lucene_document).raw())
+                # print(f"segment_json:{segment_json}")
+
                 results.append({'segment_id': hit.docid,
                                 'url': segment_json['url'],
                                 'title': segment_json['title'],
                                 'headings': segment_json['headings'],
-                                'segment': segment_json['segment'],
+                                'segment': segment_json['contents'],
                                 'start_char': segment_json['start_char'],
                                 'end_char': segment_json['end_char'],
                                 'bm25rm3_score': hit.score, 'bm25rm3_rank': i + 1})
-
         query_segment_pairs = [(query, f'{result["title"]}\n\n{result["segment"]}') for result in results]
         rerank_scores = self.reranker.predict(query_segment_pairs)
         for i in range(len(results)):
@@ -45,33 +46,37 @@ class SegmentRetriever:
         top_segments = []
         top_segment_ids = []
         for result in results[:self.selector_top_k]:
+            # print(f"result:{result}")
+
             top_segment_ids.append(result['segment_id'])
-            top_segments.append({'segment_id': result['id'], 'title': result['title'], 
+            top_segments.append({'segment_id': result['segment_id'], 'title': result['title'], 
                                  'segment_text': result['segment']})
 
         system_prompt = f'''\
-You are an expert assistant tasked with selecting the most relevant text segments to answer a given question about a news article, which will serve as the context for the retrieval-augmented generation module to answer that question.
+You are an expert assistant tasked with selecting the most relevant text segments to answer a given query about a news article, which will serve as the context for the retrieval-augmented generation module to answer that query.
 
 You will be provided with:
 1. The news article.
-2. A question about the news article.
+2. A query about the news article.
 3. A list of {self.selector_top_k} candidate text segments. These segments have been retrieved as potentially relevant and are pre-ranked (from most relevant to least relevant), but this ranking might not be perfect.
 
-Your goal is to identify and return at most 3 segments from the candidates that are most helpful for answering the question.
+Your goal is to identify and return at most 3 segments from the candidates that are most helpful for answering the query.
 The segments you select should be ordered from most relevant to least relevant.
 If fewer than 3 segments are relevant, return only those that are. If no segments are relevant, return an empty list.
-Focus on the direct relevance of the segment to the question in the context of the provided article. Ideally, the selected segments should come from various sources.'''
+Focus on the direct relevance of the segment to the query in the context of the provided article. Ideally, the selected segments should come from various sources.'''
         user_input = f'''\
 Here is the news article:
 {article}
 
-Here is the question:
+Here is the query:
 {query}
 
 Here are the 20 candidate segments, ranked by estimated relevance (highest to lowest):
 {json.dumps(top_segments, indent=4)}
 
-Please select the (at most) 3 most relevant segments from the list above to answer the question.'''
+Please select the (at most) 3 most relevant segments from the list above to answer the query.
+Output should be ONLY a list of (at most) 3 most relevant segments starting with 'msmarco_v2.1_doc_':
+[segment_id, segment_id, segment_id]'''
 
         messages = [
             {"role": "system", "content": system_prompt},
@@ -82,9 +87,9 @@ Please select the (at most) 3 most relevant segments from the list above to answ
             response_model=SelectedSegments,
             messages=messages,
             temperature=0,
-            presence_penalty=0,
+            # presence_penalty=0,
             top_p=1,
-            frequency_penalty=0,
+            # frequency_penalty=0,
         )
 
         llm_selected_segment_ids = completion

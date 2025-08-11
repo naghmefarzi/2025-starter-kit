@@ -84,6 +84,35 @@ class SafeLLMClient:
                 )
             raise
 
+    # def _extract_json_from_markdown(self, content: str) -> str:
+    #     """Extract JSON from markdown code blocks if present."""
+    #     import re
+        
+    #     content = content.strip()
+        
+    #     # Look for ```json ... ``` blocks anywhere in the text
+    #     json_match = re.search(r'```json\s*\n(.*?)\n```', content, re.DOTALL)
+    #     if json_match:
+    #         return json_match.group(1).strip()
+        
+    #     # Look for ``` ... ``` blocks anywhere in the text
+    #     code_match = re.search(r'```\s*\n(.*?)\n```', content, re.DOTALL)
+    #     if code_match:
+    #         # Check if the content looks like JSON (starts with { or [)
+    #         potential_json = code_match.group(1).strip()
+    #         if potential_json.startswith(('{', '[')):
+    #             return potential_json
+        
+    #     # Look for JSON objects that start with { and end with } (even without markdown)
+    #     json_object_match = re.search(r'(\{.*\})', content, re.DOTALL)
+    #     if json_object_match:
+    #         return json_object_match.group(1).strip()
+        
+    #     # Return as-is if no JSON detected
+    #     return content
+
+
+
     def _extract_json_from_markdown(self, content: str) -> str:
         """Extract JSON from markdown code blocks if present."""
         import re
@@ -108,14 +137,34 @@ class SafeLLMClient:
         if json_object_match:
             return json_object_match.group(1).strip()
         
+        # NEW: Handle arrays and convert them to the expected format
+        json_array_match = re.search(r'(\[.*\])', content, re.DOTALL)
+        if json_array_match:
+            array_content = json_array_match.group(1).strip()
+            try:
+                parsed_array = json.loads(array_content)
+                wrapped_object = {"segment_ids": parsed_array}
+                return json.dumps(wrapped_object)
+            except json.JSONDecodeError:
+                pass
+        
+        # Handle plain segment IDs without proper JSON formatting
+        segment_pattern = r'msmarco_v2\.1_doc_[^,\s\]]+(?:#[^,\s\]]+)?'
+        segments = re.findall(segment_pattern, content)
+        if segments:
+            wrapped_object = {"segment_ids": segments}
+            return json.dumps(wrapped_object)
+        
         # Return as-is if no JSON detected
         return content
+
 
     def generate_structured(
                             self,
                             response_model: Type[BaseModel],
                             messages: list[Dict[str, str]],
                             temperature: Optional[float] = None,
+                            top_p: float = 0.1,
                             max_retries: int = 3
                         ) -> BaseModel:
         """Generate structured output using Ollama."""
@@ -134,7 +183,7 @@ class SafeLLMClient:
                 response = self.model.chat(
                     model=CONFIG.model_name,
                     messages=messages,
-                    options={'temperature': temp, 'num_predict': CONFIG.max_tokens}
+                    options={'temperature': temp, 'num_predict': CONFIG.max_tokens, "top_p": top_p}
                 )
                 
                 # Extract response content
