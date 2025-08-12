@@ -56,7 +56,7 @@ Your report should address these key aspects of trustworthiness assessment:
 - Related events or developments.
 
 CITATION GUIDELINES:
-- Use exact segment ids as provided in the retrieved segments.
+- Use exact segment ids as provided in the retrieved segments, starting with 'msmarco_v2.1_doc_' and has '#' in it.
 - Each sentence can have 0-3 citations.
 - Factual claims and specific information must be cited; connecting sentences and general context can have empty citations.
 - Only cite segments that directly support the sentence content.
@@ -69,7 +69,7 @@ WRITING STYLE:
 - Prioritize the most critical trustworthiness factors given the word limit.
 
 QUESTION PRIORITIZATION STRATEGY:
-- Start with the most important questions (ranked #1, #2, #3, etc.).
+- Start with the most important questions.
 - Thoroughly address high-priority questions before moving to lower-priority ones.
 - If space runs out, it's better to fully address fewer important questions than to superficially cover many.
 
@@ -79,7 +79,17 @@ THINKING PROCESS:
 - Consider how this sentence contributes to the overall trustworthiness evaluation.
 - Then craft the actual sentence based on your reasoning.
 
-Remember: Quality over quantity. It's better to thoroughly address fewer questions with strong evidence than to superficially cover many topics without proper grounding.'''
+Remember: Quality over quantity. It's better to thoroughly address fewer questions with strong evidence than to superficially cover many topics without proper grounding.
+Output format:
+{{
+    "sentences": [
+        {{"rationale": ..., "sentence_text": ..., "citations": ...}},
+        {{"rationale": ..., "sentence_text": ..., "citations": ...}},
+        {{"rationale": ..., "sentence_text": ..., "citations": ...}},
+        ...
+
+    ]
+}}'''
 
     def generate_report(self, article: str, retrieved_segments: str, questions: str, all_llm_selected_segment_ids: set):
         user_input = f'''\
@@ -93,6 +103,15 @@ Here are the 10 critical questions that should be addressed (in order of importa
 {questions}
 
 Generate a report that addresses as many of the important questions as possible using only the information available in the retrieved segments. Each sentence should be factual, well-grounded, and include appropriate citations.
+Rules for Citations:
+- You MUST select only segment IDs exactly as they appear in the candidate list.
+- Each ID starts with 'msmarco_v2.1_doc_' followed by a document number, '#', and a suffix (e.g., a number or number_another_number).
+- Do NOT invent, modify, simplify, or guess any part of the ID, including the suffix.
+- Do NOT generate IDs not present in the candidate list, such as changing '#17_1908612056' to '#17'.
+Pick citations accordingly from: {all_llm_selected_segment_ids}
+
+Output format:
+
 {{
     "sentences": [
         {{"rationale": ..., "sentence_text": ..., "citations": ...}},
@@ -101,12 +120,15 @@ Generate a report that addresses as many of the important questions as possible 
         ...
 
     ]
-}}'''
-
+}}
+'''   
+        messages = [
+            {"role": "system", "content": self.system_prompt},
+            {"role": "user", "content": user_input}
+        ]
         response = self.generate_structured(
             response_model=Report,
-            system_prompt=self.system_prompt,
-            user_input=user_input,
+            messages=messages,
             temperature=0.1
         )
 

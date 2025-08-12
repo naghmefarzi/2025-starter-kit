@@ -52,7 +52,18 @@ Requirements for each question:
 - Ranked from most to least important for assessing trustworthiness.
 - Keep the rationale concise.
 
-For each question, first provide a clear rationale explaining why it's important for evaluating the article's trustworthiness and how it contributes to media literacy.'''
+For each question, first provide a clear rationale explaining why it's important for evaluating the article's trustworthiness and how it contributes to media literacy.
+Return a JSON object containing EXACTLY 10 questions matching this schema:
+
+{{
+    "questions": [
+        {{"rationale": ..., "question_text": ...}},
+        {{"rationale": ..., "question_text": ...}},
+        {{"rationale": ..., "question_text": ...}},
+        ...
+
+    ]
+}}'''
         
     def generate_questions(self, article: str, context: str):
         user_input = f'''\

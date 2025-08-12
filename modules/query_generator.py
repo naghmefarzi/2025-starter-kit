@@ -82,7 +82,17 @@ Return a JSON object matching this schema:
 }}'''
             user_input = f'''\
 Here is the news article:
-{article}'''
+{article}
+
+Return a JSON object matching this schema:
+{{
+    "queries_with_rationale": [
+        {{"rationale": ..., "query": ...}},
+        {{"rationale": ..., "query": ...}},
+
+        ...
+    ]
+}}'''
         messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_input}
@@ -91,7 +101,8 @@ Here is the news article:
             response = self.generate_structured(
                 response_model=QueryReasoning,
                 messages=messages,
-                temperature=0.3
+                temperature=0.3,
+                top_p = 1
             )
 
             print(f"Generated {len(response.queries_with_rationale)} queries successfully")

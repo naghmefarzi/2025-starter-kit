@@ -45,6 +45,8 @@ class SegmentRetriever:
 
         top_segments = []
         top_segment_ids = []
+        provided_ids_set = set(top_segment_ids)
+
         for result in results[:self.selector_top_k]:
             # print(f"result:{result}")
 
@@ -53,17 +55,27 @@ class SegmentRetriever:
                                  'segment_text': result['segment']})
 
         system_prompt = f'''\
-You are an expert assistant tasked with selecting the most relevant text segments to answer a given query about a news article, which will serve as the context for the retrieval-augmented generation module to answer that query.
+You are an expert assistant tasked with selecting the most relevant segment IDs from a provided list of candidate text segments to answer a query about a news article. These segment IDs will be used as context for a retrieval-augmented generation module.
 
 You will be provided with:
 1. The news article.
 2. A query about the news article.
-3. A list of {self.selector_top_k} candidate text segments. These segments have been retrieved as potentially relevant and are pre-ranked (from most relevant to least relevant), but this ranking might not be perfect.
+3. A list of {self.selector_top_k} candidate text segments, each identified by a unique segment ID. These are pre-ranked (highest to lowest relevance), but the ranking may not be perfect.
 
-Your goal is to identify and return at most 3 segments from the candidates that are most helpful for answering the query.
-The segments you select should be ordered from most relevant to least relevant.
-If fewer than 3 segments are relevant, return only those that are. If no segments are relevant, return an empty list.
-Focus on the direct relevance of the segment to the query in the context of the provided article. Ideally, the selected segments should come from various sources.'''
+Your task:
+- Select at most 3 segment IDs from the provided candidate list that are most relevant to answering the query.
+- Order the selected IDs from most relevant to least relevant.
+- If fewer than 3 IDs are relevant, return only those. If none are relevant, return an empty list.
+- Focus on the direct relevance of the segment content to the query within the article's context.
+- Ideally, select IDs from different sources if equally relevant.
+
+Rules:
+- You MUST select only segment IDs exactly as they appear in the candidate list.
+- Each ID starts with 'msmarco_v2.1_doc_' followed by a document number, '#', and a suffix (e.g., a number or number_another_number).
+- Do NOT invent, modify, simplify, or guess any part of the ID, including the suffix.
+- Do NOT generate IDs not present in the candidate list, such as changing '#17_1908612056' to '#17'.
+
+'''
         user_input = f'''\
 Here is the news article:
 {article}
@@ -71,12 +83,20 @@ Here is the news article:
 Here is the query:
 {query}
 
-Here are the 20 candidate segments, ranked by estimated relevance (highest to lowest):
+Here are the 10 candidate segments with their segment IDs, ranked by estimated relevance (highest to lowest):
 {json.dumps(top_segments, indent=4)}
 
-Please select the (at most) 3 most relevant segments from the list above to answer the query.
-Output should be ONLY a list of (at most) 3 most relevant segments starting with 'msmarco_v2.1_doc_' and has '#' in it:
-[segment_id, segment_id, segment_id]'''
+Please select at most 3 segment IDs from the candidate list above that are most relevant to answering the query.
+Output ONLY a list of up to 3 segment IDs, copied exactly as they appear in the candidate list (starting with 'msmarco_v2.1_doc_' and containing '#', e.g., 'msmarco_v2.1_doc_28_903296016#17_1908612056').
+Do NOT invent, modify, or simplify any IDs.
+Do NOT include explanations, text content, or any other output.
+
+
+Output format:
+[segment_id, segment_id, segment_id]
+
+Pick citations accordingly from: {provided_ids_set}
+'''
 
         messages = [
             {"role": "system", "content": system_prompt},
@@ -86,16 +106,13 @@ Output should be ONLY a list of (at most) 3 most relevant segments starting with
         completion = llm_client.generate_structured(
             response_model=SelectedSegments,
             messages=messages,
-            temperature=0,
-            # presence_penalty=0,
-            top_p=1,
-            # frequency_penalty=0,
+            temperature=0.2,
+            top_p=0.1,
         )
 
         llm_selected_segment_ids = completion
 
         # Enhanced validation with fallbacks
-        provided_ids_set = set(top_segment_ids)
         validated_segment_ids = []
 
         for segment_id in llm_selected_segment_ids.segment_ids:

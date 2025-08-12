@@ -9,6 +9,7 @@ from typing import Type, TypeVar, Optional, Dict, Any
 from pydantic import BaseModel
 from config import CONFIG
 import json
+import random
 
 T = TypeVar('T', bound=BaseModel)
 
@@ -84,34 +85,6 @@ class SafeLLMClient:
                 )
             raise
 
-    # def _extract_json_from_markdown(self, content: str) -> str:
-    #     """Extract JSON from markdown code blocks if present."""
-    #     import re
-        
-    #     content = content.strip()
-        
-    #     # Look for ```json ... ``` blocks anywhere in the text
-    #     json_match = re.search(r'```json\s*\n(.*?)\n```', content, re.DOTALL)
-    #     if json_match:
-    #         return json_match.group(1).strip()
-        
-    #     # Look for ``` ... ``` blocks anywhere in the text
-    #     code_match = re.search(r'```\s*\n(.*?)\n```', content, re.DOTALL)
-    #     if code_match:
-    #         # Check if the content looks like JSON (starts with { or [)
-    #         potential_json = code_match.group(1).strip()
-    #         if potential_json.startswith(('{', '[')):
-    #             return potential_json
-        
-    #     # Look for JSON objects that start with { and end with } (even without markdown)
-    #     json_object_match = re.search(r'(\{.*\})', content, re.DOTALL)
-    #     if json_object_match:
-    #         return json_object_match.group(1).strip()
-        
-    #     # Return as-is if no JSON detected
-    #     return content
-
-
 
     def _extract_json_from_markdown(self, content: str) -> str:
         """Extract JSON from markdown code blocks if present."""
@@ -166,7 +139,7 @@ class SafeLLMClient:
                             messages: list[Dict[str, str]],
                             temperature: Optional[float] = None,
                             top_p: float = 0.1,
-                            max_retries: int = 3
+                            max_retries: int = 5
                         ) -> BaseModel:
         """Generate structured output using Ollama."""
         if not self.model:
@@ -206,6 +179,8 @@ class SafeLLMClient:
                     logging.warning(f"Failed to parse JSON on attempt {attempt + 1}: {e}")
                     logging.warning(f"Cleaned response was: {cleaned_content}")
                     if attempt == max_retries - 1:
+                        temp = random.random()
+                        top_p = random.random()
                         raise RuntimeError(f"LLM failed to generate valid JSON after {max_retries} attempts. Last response: {cleaned_content}")
                     time.sleep(2 ** attempt)  # Exponential backoff
                     continue
@@ -216,7 +191,10 @@ class SafeLLMClient:
                 except Exception as e:
                     logging.warning(f"Pydantic validation failed on attempt {attempt + 1}: {e}")
                     if attempt == max_retries - 1:
+                        temp = random.random()
+                        top_p = random.random()
                         raise RuntimeError(f"Failed to validate response with Pydantic after {max_retries} attempts: {e}")
+                    
                     time.sleep(2 ** attempt)  # Exponential backoff
                     continue
                 

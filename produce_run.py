@@ -3,7 +3,7 @@ import json
 from dotenv import load_dotenv
 from llm_client import llm_client 
 from pydantic import BaseModel
-
+from config import CONFIG
 
 load_dotenv()
 
@@ -44,15 +44,15 @@ Be decisive in your editing: remove filler words, simplify complex phrases, use 
         return response
 
 def main():
-    team_id = 'dragun-organizers'
-    run_id_prefix = 'dragun-organizers-starter-kit'
+    team_id = CONFIG.team_id
+    run_id_prefix = CONFIG.run_id
 
     target_article_ids = []
     with open('./data/trec-2025-dragun-topics.jsonl', 'r', encoding='utf-8') as f_in:
         for line in f_in:
             target_article_ids.append(json.loads(line.strip())['docid'])
 
-    with open('output/tracking_data.json', 'r', encoding='utf-8') as f_in:
+    with open(f'output/tracking_data{team_id}_{run_id_prefix}.json', 'r', encoding='utf-8') as f_in:
         tracking_data = json.load(f_in)
     
     task1_output = ''

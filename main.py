@@ -132,7 +132,7 @@ def main():
         per_article_tracking_data['report_generation'] = report_json
 
         tracking_data[article_id] = per_article_tracking_data
-        with open('output/tracking_data.json', 'w', encoding='utf-8') as f:
+        with open(f'output/tracking_data_{CONFIG.model_name}_{CONFIG.team_id}_{CONFIG.run_id}.json', 'w', encoding='utf-8') as f:
             json.dump(tracking_data, f, indent=4, ensure_ascii=False)
         
 

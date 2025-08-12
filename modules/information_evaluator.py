@@ -77,8 +77,10 @@ Here is the news article:
 
 Here are the previously generated queries with retrieved segments:
 {cleaned_history}
-IMPORTANT: Respond with valid JSON only. No additional text or explanations.
 
+
+
+IMPORTANT: Respond with valid JSON only. No additional text or explanations.
 Required format:
 {{
     "evaluation_reasoning": "your detailed reasoning here",
