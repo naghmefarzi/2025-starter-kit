@@ -52,8 +52,8 @@ Maintain a highly skeptical stance—assume information is insufficient unless y
                         seen_segments.add(segment_hash)
                         # Keep only essential fields
                         clean_segment = {
-                            "url": segment["url"],
-                            "title": segment["title"], 
+                            # "url": segment["url"],
+                            # "title": segment["title"], 
                             "segment_text": segment["segment_text"]
                         }
                         cleaned_query["retrieved_segments"].append(clean_segment)

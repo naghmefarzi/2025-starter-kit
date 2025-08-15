@@ -27,8 +27,14 @@ Your task is to aggressively condense the report while:
 - Maintaining the same number of sentences
 - Ensuring each sentence remains coherent and informative
 - Removing all unnecessary words, redundant phrases, and verbose expressions
+- Keeping the SAME number of sentences ({len(json.loads(sentences))})
 
-Be decisive in your editing: remove filler words, simplify complex phrases, use shorter synonyms, and eliminate redundancy. Your goal is to achieve the target word reduction in one pass.'''
+Be decisive in your editing: remove filler words, simplify complex phrases, use shorter synonyms, and eliminate redundancy. Your goal is to achieve the target word reduction in one pass.
+
+Return a JSON object with a single key "sentences" containing a list of EXACTLY {len(json.loads(sentences))} new sentences, like this schema:
+{{
+  "sentences": ["sentence1", "sentence2", ...]
+}}'''
         user_input = f'The report is shown below. \n{sentences}'
         messages = [
             {"role": "system", "content": system_prompt},
@@ -39,9 +45,81 @@ Be decisive in your editing: remove filler words, simplify complex phrases, use 
             response_model=Sentences,
             messages=messages,
             temperature=0,
+            max_retries=3
         )
-
         return response
+
+# def main():
+#     team_id = CONFIG.team_id
+#     run_id_prefix = CONFIG.run_id
+
+#     target_article_ids = []
+#     with open('./data/trec-2025-dragun-topics.jsonl', 'r', encoding='utf-8') as f_in:
+#         for line in f_in:
+#             target_article_ids.append(json.loads(line.strip())['docid'])
+
+#     with open(f'output/tracking_data_{CONFIG.model_name}_{team_id}_{run_id_prefix}.json', 'r', encoding='utf-8') as f_in:
+#         tracking_data = json.load(f_in)
+    
+#     task1_output = ''
+#     task2_output = []
+#     report_shortener = ReportShortener()
+
+#     for article_id in target_article_ids:
+#         article_data = tracking_data[article_id]
+#         for i in range(len(article_data['question_generation'])):
+#             question = article_data['question_generation'][f'question_{i+1}']['question']
+#             task1_output += f'{article_id}\t{team_id}\t{run_id_prefix}-task-1\t{i+1}\t{question}\n'
+
+#         sentences = []
+#         original_word_count = 0
+#         responses = []
+#         for i in range(len(article_data['report_generation'])):
+#             sentence = article_data['report_generation'][f'sentence_{i+1}']['sentence']
+#             sentences.append(sentence)
+#             original_word_count += len(sentence.split())
+#         if original_word_count > 250:
+#             print(f'[INFO] {article_id} has {original_word_count} words in the report.')
+#             new_word_count = original_word_count
+#             new_sentences = sentences.copy()
+#             for i in range(5):
+#                 if new_word_count <= 250:
+#                     break
+#                 else:
+#                     print(f'\t[INFO] {article_id} has {new_word_count} words in the report. Shortening in iteration {i+1} ...')
+#                     response = report_shortener.shorten_report(json.dumps(new_sentences, indent=4), new_word_count)
+#                     new_sentences = response.sentences
+#                     new_word_count = sum(len(sentence.split()) for sentence in new_sentences)
+#             assert len(new_sentences) == len(sentences)
+#             print(f'\t[INFO] {article_id} now has {new_word_count} words in the report after shortening.')
+#             for i in range(len(sentences)):
+#                 responses.append({'text': new_sentences[i], 'citations': article_data['report_generation'][f'sentence_{i+1}']['citations']})
+#         else:
+#             for i in range(len(article_data['report_generation'])):
+#                 responses.append({'text': article_data['report_generation'][f'sentence_{i+1}']['sentence'], 
+#                                   'citations': article_data['report_generation'][f'sentence_{i+1}']['citations']})
+        
+#         task2_output.append({
+#             'metadata': {
+#                 'team_id': team_id,
+#                 'run_id': f'{run_id_prefix}-task-2',
+#                 'topic_id': article_id,
+#                 'type': 'automatic',
+#                 'use_starter_kit': 1
+#             },
+#             'responses': responses
+#         })
+
+#     task1_output = task1_output.strip()
+
+#     with open(f'output/{run_id_prefix}-task-1', 'w', encoding='utf-8') as f_out:
+#         f_out.write(task1_output)
+
+#     with open(f'output/{run_id_prefix}-task-2', 'w', encoding='utf-8') as f_out:
+#         for item in task2_output:
+#             f_out.write(json.dumps(item) + '\n')
+
+
 
 def main():
     team_id = CONFIG.team_id
@@ -52,7 +130,7 @@ def main():
         for line in f_in:
             target_article_ids.append(json.loads(line.strip())['docid'])
 
-    with open(f'output/tracking_data{team_id}_{run_id_prefix}.json', 'r', encoding='utf-8') as f_in:
+    with open(f'output/tracking_data_{team_id}_{run_id_prefix}.json', 'r', encoding='utf-8') as f_in:
         tracking_data = json.load(f_in)
     
     task1_output = ''
@@ -60,6 +138,9 @@ def main():
     report_shortener = ReportShortener()
 
     for article_id in target_article_ids:
+        if article_id not in tracking_data:
+            print(f'[ERROR] Article {article_id} not found in tracking data. Skipping...')
+            continue
         article_data = tracking_data[article_id]
         for i in range(len(article_data['question_generation'])):
             question = article_data['question_generation'][f'question_{i+1}']['question']
@@ -73,25 +154,31 @@ def main():
             sentences.append(sentence)
             original_word_count += len(sentence.split())
         if original_word_count > 250:
-            print(f'[INFO] {article_id} has {original_word_count} words in the report.')
+            print(f'[INFO] {article_id} has {original_word_count} words.')
             new_word_count = original_word_count
             new_sentences = sentences.copy()
             for i in range(5):
                 if new_word_count <= 250:
                     break
-                else:
-                    print(f'\t[INFO] {article_id} has {new_word_count} words in the report. Shortening in iteration {i+1} ...')
+                print(f'\t[INFO] Shortening {article_id} ({new_word_count} words) in iteration {i+1}...')
+                try:
                     response = report_shortener.shorten_report(json.dumps(new_sentences, indent=4), new_word_count)
                     new_sentences = response.sentences
-                    new_word_count = sum(len(sentence.split()) for sentence in new_sentences)
-            assert len(new_sentences) == len(sentences)
-            print(f'\t[INFO] {article_id} now has {new_word_count} words in the report after shortening.')
-            for i in range(len(sentences)):
-                responses.append({'text': new_sentences[i], 'citations': article_data['report_generation'][f'sentence_{i+1}']['citations']})
+                    if len(new_sentences) != len(sentences):
+                        print(f'\t[ERROR] Sentence count mismatch: expected {len(sentences)}, got {len(new_sentences)}. Reverting...')
+                        new_sentences = sentences
+                        break
+                    new_word_count = sum(len(s.split()) for s in new_sentences)
+                except RuntimeError as e:
+                    print(f'\t[ERROR] Failed to shorten {article_id}: {e}. Reverting...')
+                    new_sentences = sentences
+                    break
+            assert len(new_sentences) == len(sentences), f"Sentence count mismatch: expected {len(sentences)}, got {len(new_sentences)}"
+            print(f'\t[INFO] {article_id} now has {new_word_count} words.')
         else:
-            for i in range(len(article_data['report_generation'])):
-                responses.append({'text': article_data['report_generation'][f'sentence_{i+1}']['sentence'], 
-                                  'citations': article_data['report_generation'][f'sentence_{i+1}']['citations']})
+            new_sentences = sentences
+        for i in range(len(new_sentences)):
+            responses.append({'text': new_sentences[i], 'citations': article_data['report_generation'][f'sentence_{i+1}']['citations']})
         
         task2_output.append({
             'metadata': {

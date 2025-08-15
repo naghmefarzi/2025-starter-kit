@@ -8,7 +8,7 @@ from llm_client import llm_client
 
 
 class SelectedSegments(BaseModel):
-    segment_ids: list[str]
+    segment_ids: list[int]
 
 
 class SegmentRetriever:
@@ -45,14 +45,16 @@ class SegmentRetriever:
 
         top_segments = []
         top_segment_ids = []
-        provided_ids_set = set(top_segment_ids)
+        mapped_segment_ids = {}
+        # provided_ids_set = set(top_segment_ids)
 
-        for result in results[:self.selector_top_k]:
+        for i, result in enumerate(results[:self.selector_top_k]):
             # print(f"result:{result}")
 
             top_segment_ids.append(result['segment_id'])
-            top_segments.append({'segment_id': result['segment_id'], 'title': result['title'], 
+            top_segments.append({'segment_id': i+1, 'title': result['title'], 
                                  'segment_text': result['segment']})
+            mapped_segment_ids[i+1] = result["segment_id"]
 
         system_prompt = f'''\
 You are an expert assistant tasked with selecting the most relevant segment IDs from a provided list of candidate text segments to answer a query about a news article. These segment IDs will be used as context for a retrieval-augmented generation module.
@@ -69,12 +71,6 @@ Your task:
 - Focus on the direct relevance of the segment content to the query within the article's context.
 - Ideally, select IDs from different sources if equally relevant.
 
-Rules:
-- You MUST select only segment IDs exactly as they appear in the candidate list.
-- Each ID starts with 'msmarco_v2.1_doc_' followed by a document number, '#', and a suffix (e.g., a number or number_another_number).
-- Do NOT invent, modify, simplify, or guess any part of the ID, including the suffix.
-- Do NOT generate IDs not present in the candidate list, such as changing '#17_1908612056' to '#17'.
-
 '''
         user_input = f'''\
 Here is the news article:
@@ -87,16 +83,10 @@ Here are the 10 candidate segments with their segment IDs, ranked by estimated r
 {json.dumps(top_segments, indent=4)}
 
 Please select at most 3 segment IDs from the candidate list above that are most relevant to answering the query.
-Output ONLY a list of up to 3 segment IDs, copied exactly as they appear in the candidate list (starting with 'msmarco_v2.1_doc_' and containing '#', e.g., 'msmarco_v2.1_doc_28_903296016#17_1908612056').
-Do NOT invent, modify, or simplify any IDs.
-Do NOT include explanations, text content, or any other output.
 
 
-Output format:
-[segment_id, segment_id, segment_id]
-
-Pick citations accordingly from: {provided_ids_set}
-'''
+Output format should be the segment_id s in a list:
+[segment_id, segment_id, segment_id]'''
 
         messages = [
             {"role": "system", "content": system_prompt},
@@ -110,18 +100,22 @@ Pick citations accordingly from: {provided_ids_set}
             top_p=0.1,
         )
 
-        llm_selected_segment_ids = completion
+        llm_selected_segment_ids = completion.segment_ids
 
         # Enhanced validation with fallbacks
         validated_segment_ids = []
 
-        for segment_id in llm_selected_segment_ids.segment_ids:
-            if segment_id in provided_ids_set:
+        for masked_segment_id in llm_selected_segment_ids:
+            if int(masked_segment_id) in mapped_segment_ids:
+                segment_id = mapped_segment_ids[int(masked_segment_id)]
+
                 validated_segment_ids.append(segment_id)
             else:
-                print(f"Warning: LLM hallucinated segment_id: {segment_id}")
+                print(f"Warning: LLM hallucinated segment_id: {masked_segment_id}")
                 # Use fallback: pick the first available ID not already selected
                 available_ids = [vid for vid in top_segment_ids if vid not in validated_segment_ids]
+                print(f"provided ids:{top_segment_ids}")
+
                 if available_ids:
                     fallback_id = available_ids[0]
                     print(f"Using fallback: {fallback_id}")
@@ -132,11 +126,19 @@ Pick citations accordingly from: {provided_ids_set}
             print("Warning: No valid segments selected, using top segment by rerank score")
             validated_segment_ids = [top_segment_ids[0]]
 
-        # Build final results using validated IDs
+        # Ensure we have at least one segment
+        if not validated_segment_ids and top_segment_ids:
+            print("Warning: No valid segments selected, using top segment by rerank score")
+            validated_segment_ids.append(top_segment_ids[0])
+
+        # Build final results using validated segment IDs
         llm_selected_results = []
+        for result in results:
+            if result['segment_id'] in validated_segment_ids:
+                llm_selected_results.append(result)
+
+        # Assign reranker rank to all results
         for i, result in enumerate(results):
-            results[i]['reranker_rank'] = i + 1
-            if results[i]['segment_id'] in validated_segment_ids:
-                llm_selected_results.append(results[i])
+            result['reranker_rank'] = i + 1
 
         return results, llm_selected_results

@@ -17,7 +17,7 @@ class QueryGenerator(SafeLLMClient):
         super().__init__()
         self.key_aspects = '''\
 1. Investigate the Source:
-- Examine the publisher or author's background and reputation.
+- Examine the publisher or author's background and reputation mentioned in the article.
 - Queries should target credibility, potential biases, ownership, or past controversies.
 
 2. Check the Claim:
@@ -44,17 +44,7 @@ You are a professional fact-checker. Given a news article, your task is to caref
 {self.key_aspects}
 
 You have already generated some queries, and some document segments have been retrieved for them. However, the information obtained so far is still insufficient to assess the article's trustworthiness. Based on the previously generated questions and the retrieved segments, generate five additional queries that either address aspects not yet covered or rephrase queries that remain unanswered by the retrieved segments. For each search query you produce, you must provide a rationale clearly articulating why this particular query is important and how it contributes to your fact-checking process. Each rationale must demonstrate thoughtful analysis, critical thinking, and alignment with professional fact-checking practices.
-Return a JSON object matching this schema:
-
-{{
-    "queries_with_rationale": [
-        {{"rationale": ..., "query": ...}},
-        {{"rationale": ..., "query": ...}},
-        {{"rationale": ..., "query": ...}},
-        ...
-
-    ]
-}}'''
+'''
             user_input = f'''\
 Here is the news article:
 {article}
@@ -65,32 +55,39 @@ Here are the previously generated queries with retrieved segments:
 Feedback on the previously generated queries and retrieved segments: {feedback}'''
         else:
             system_prompt = f'''\
-You are a professional fact-checker. Given a news article, your task is to carefully evaluate its trustworthiness. You will do this by generating five detailed, well-thought-out search queries that a skilled fact-checker would issue to a search engine, each preceded by a clear rationale explaining why that query is essential for verifying the article's reliability. Note that search engine is based on the BM25 (with RM3) sparse retrieval algorithm. Frame your queries in a way that works best with it. Follow the framework below closely:
+You are a professional fact-checker. Given a news article, your task is to carefully evaluate its trustworthiness. You will do this by generating five very DETAILED, well-thought-out search queries that a skilled fact-checker would issue to a search engine, each preceded by a clear rationale explaining why that query is essential for verifying the article's reliability. Note that search engine is based on the BM25 (with RM3) sparse retrieval algorithm. Frame your queries in a way that works best with it. Follow the framework below closely:
 
 {self.key_aspects}
 
 For each search query you produce, you must provide a rationale clearly articulating why this particular query is important and how it contributes to your fact-checking process. Each rationale must demonstrate thoughtful analysis, critical thinking, and alignment with professional fact-checking practices.
-Return a JSON object matching this schema:
-
-{{
-    "queries_with_rationale": [
-        {{"rationale": ..., "query": ...}},
-        {{"rationale": ..., "query": ...}},
-
-        ...
-    ]
-}}'''
+'''
             user_input = f'''\
 Here is the news article:
 {article}
 
-Return a JSON object matching this schema:
+Return a JSON object EXACTLY matching this schema:
 {{
     "queries_with_rationale": [
-        {{"rationale": ..., "query": ...}},
-        {{"rationale": ..., "query": ...}},
 
-        ...
+        {{"rationale": "your rationale" ,
+          "query": "your query"
+          }},
+          
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
+
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
+
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
+
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
     ]
 }}'''
         messages = [

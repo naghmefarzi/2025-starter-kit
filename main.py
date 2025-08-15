@@ -9,6 +9,7 @@ from modules.segment_retriever import SegmentRetriever
 from modules.information_evaluator import InformationEvaluator
 from modules.question_generator import QuestionGenerator
 from modules.report_generator import ReportGenerator
+from modules.roaster import Roaster
 
 # Configure logging
 logging.basicConfig(
@@ -43,6 +44,7 @@ def main():
     information_evaluator = InformationEvaluator()
     question_generator = QuestionGenerator()
     report_generator = ReportGenerator()
+    roaster = Roaster()
 
     # Process topics
     tracking_data = {}
@@ -57,9 +59,17 @@ def main():
 
         while iteration_counter < max_query_iterations + 1:
             iteration_data = {}  # One iteration of query generation, segment retrieval, and information evaluation
+            
+            # 0. [Optional] Roast the article!
+            roasted_article = roaster.roast(article_json_str)
+
             # 1. Generate search queries
             if iteration_counter == 1:
+                roasted_queries = query_generator.generate_query(roasted_article)
+
                 queries = query_generator.generate_query(article_json_str)
+                
+                queries.extend(roasted_queries)
             else:
                 queries = query_generator.generate_query(article_json_str,  json.dumps(query_retrieval_history, indent=4), 
                                                          information_evaluation_reasoning)
@@ -128,11 +138,11 @@ def main():
                                                             json.dumps(questions_json, indent=4), all_llm_selected_segment_ids)
         report_json = {}
         for i, sentence in enumerate(generated_report):
-            report_json[f'sentence_{i+1}'] = {'sentence': sentence[1], 'rationale': sentence[0], 'citations': sentence[2]}
+            report_json[f'sentence_{i+1}'] = {'sentence': sentence[0], 'citations': sentence[1]}
         per_article_tracking_data['report_generation'] = report_json
 
         tracking_data[article_id] = per_article_tracking_data
-        with open(f'output/tracking_data_{CONFIG.model_name}_{CONFIG.team_id}_{CONFIG.run_id}.json', 'w', encoding='utf-8') as f:
+        with open(f'output/tracking_data_gpt_{CONFIG.team_id}_{CONFIG.run_id}.json', 'w', encoding='utf-8') as f:
             json.dump(tracking_data, f, indent=4, ensure_ascii=False)
         
 

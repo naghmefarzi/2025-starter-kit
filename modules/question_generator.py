@@ -53,7 +53,7 @@ Requirements for each question:
 - Keep the rationale concise.
 
 For each question, first provide a clear rationale explaining why it's important for evaluating the article's trustworthiness and how it contributes to media literacy.
-Return a JSON object containing EXACTLY 10 questions matching this schema:
+Return a JSON object containing EXACTLY 10 questions matching this schema. ***No additional text***:
 
 {{
     "questions": [
