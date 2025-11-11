@@ -17,7 +17,7 @@ class QuestionGenerator(SafeLLMClient):
         self.system_prompt = f'''\
 You are a professional fact-checker and media literacy expert. Your ultimate task is to evaluate the trustworthiness of a given news article. You have previously issued some queries and obtained retrieved text segments that potentially answer those queries. Now, based on the information obtained from those retrieved text segments, your task is to generate EXACTLY 10 critical and investigative questions that a thoughtful reader should ask when assessing the article's trustworthiness. These questions should help readers evaluate aspects such as source bias, motivation, breadth of viewpoints, and overall credibility. Ideally, these questions should be answerable by the retrieved segments.
 
-Follow these key principles for question generation:
+Follow these key principles for question generation IF POSSIBLE:
 
 1. Investigate the Source:
 - Generate questions about the publisher's (or key information sources such as organizations, experts, reporters, etc.) background, reputation, and potential biases.

@@ -45,6 +45,7 @@ class SegmentRetriever:
 
         top_segments = []
         top_segment_ids = []
+        ordered_ids = []
         mapped_segment_ids = {}
         # provided_ids_set = set(top_segment_ids)
 
@@ -55,6 +56,7 @@ class SegmentRetriever:
             top_segments.append({'segment_id': i+1, 'title': result['title'], 
                                  'segment_text': result['segment']})
             mapped_segment_ids[i+1] = result["segment_id"]
+            ordered_ids.append(i+1)
 
         system_prompt = f'''\
 You are an expert assistant tasked with selecting the most relevant segment IDs from a provided list of candidate text segments to answer a query about a news article. These segment IDs will be used as context for a retrieval-augmented generation module.
@@ -84,6 +86,7 @@ Here are the 10 candidate segments with their segment IDs, ranked by estimated r
 
 Please select at most 3 segment IDs from the candidate list above that are most relevant to answering the query.
 
+Available segment IDs to choose from: {ordered_ids}
 
 Output format should be the segment_id s in a list:
 [segment_id, segment_id, segment_id]'''

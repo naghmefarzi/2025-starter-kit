@@ -1,0 +1,14 @@
+# Core dependencies
+tqdm
+python-dotenv
+pydantic>=2.0.0
+
+# LLM and structured generation
+outlines>=0.0.46
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0
+
+# HTTP requests for API backends
+requests>=2.28.0
+

@@ -52,7 +52,34 @@ Here is the news article:
 Here are the previously generated queries with retrieved segments:
 {context}
 
-Feedback on the previously generated queries and retrieved segments: {feedback}'''
+Feedback on the previously generated queries and retrieved segments: {feedback}
+
+
+Generate five additional queries and return a JSON object EXACTLY matching this schema:
+{{
+    "queries_with_rationale": [
+
+        {{"rationale": "your rationale" ,
+          "query": "your query"
+          }},
+          
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
+
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
+
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
+
+        {{"rationale": "another rationale" , 
+        "query": "another query"
+        }},
+    ]
+}}'''
         else:
             system_prompt = f'''\
 You are a professional fact-checker. Given a news article, your task is to carefully evaluate its trustworthiness. You will do this by generating five very DETAILED, well-thought-out search queries that a skilled fact-checker would issue to a search engine, each preceded by a clear rationale explaining why that query is essential for verifying the article's reliability. Note that search engine is based on the BM25 (with RM3) sparse retrieval algorithm. Frame your queries in a way that works best with it. Follow the framework below closely:
@@ -98,8 +125,8 @@ Return a JSON object EXACTLY matching this schema:
             response = self.generate_structured(
                 response_model=QueryReasoning,
                 messages=messages,
-                temperature=0.3,
-                top_p = 1
+                temperature=0.1,
+                top_p = 0.3
             )
 
             print(f"Generated {len(response.queries_with_rationale)} queries successfully")

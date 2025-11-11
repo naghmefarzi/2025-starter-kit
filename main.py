@@ -50,8 +50,13 @@ def main():
     tracking_data = {}
     for article in tqdm(articles, desc="Processing articles"):
         article_id = article.get('docid')
-        article_json_str = json.dumps({k: v for k, v in article.items() if k != 'docid'}, indent=4)
-        
+        # article_json_str = json.dumps({k: v for k, v in article.items() if k != 'docid'}, indent=4)
+        original_article = {k: v for k, v in article.items() if k != 'docid'}
+        roasted_article = roaster.roast(json.dumps(original_article, indent=4))
+        article_json_str = json.dumps({
+            'original article': original_article,
+            'a critique to convince every part of the original article is false but may include hallucination': roasted_article
+        }, indent=4)
         per_article_tracking_data = {}
         iteration_counter = 1
         query_retrieval_history = {}
@@ -62,12 +67,12 @@ def main():
             
             # 0. [Optional] Roast the article!
             roasted_article = roaster.roast(article_json_str)
-
+            per_article_tracking_data['generated_critique_article'] = roasted_article
             # 1. Generate search queries
             if iteration_counter == 1:
                 roasted_queries = query_generator.generate_query(roasted_article)
 
-                queries = query_generator.generate_query(article_json_str)
+                queries = query_generator.generate_query(original_article)
                 
                 queries.extend(roasted_queries)
             else:
@@ -138,12 +143,14 @@ def main():
                                                             json.dumps(questions_json, indent=4), all_llm_selected_segment_ids)
         report_json = {}
         for i, sentence in enumerate(generated_report):
-            report_json[f'sentence_{i+1}'] = {'sentence': sentence[0], 'citations': sentence[1]}
+            report_json[f'sentence_{i+1}'] = {'rational': sentence[0], 'sentence': sentence[1], 'citations': sentence[2]}
         per_article_tracking_data['report_generation'] = report_json
 
         tracking_data[article_id] = per_article_tracking_data
-        with open(f'output/tracking_data_gpt_{CONFIG.team_id}_{CONFIG.run_id}.json', 'w', encoding='utf-8') as f:
+        with open(f'output/tracking_data_{CONFIG.model_name}_convince_false_{CONFIG.team_id}_{CONFIG.run_id}.json', 'w', encoding='utf-8') as f:
             json.dump(tracking_data, f, indent=4, ensure_ascii=False)
+
+        # break
         
 
 if __name__ == "__main__":

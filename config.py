@@ -18,9 +18,22 @@ class CONFIG:
 
     # System Configuration
     team_id = "TREMA_UNH"
-    run_id = "run_2"
-    max_query_iterations = 1
+    run_id = "run_8"
+    max_query_iterations = 5
     debug_mode = True
 
 # run_1 with qwen model max query iter=1
 
+# run_2 citations are not correct, they are descriptions- iteration:2, qwen2.5
+
+#run 3 iteration:2, qwen2.5
+
+#run 4 iteration:2, qwen2.5
+
+#run 5 iteration 5 qwen2.5
+
+# run 6 convince false iteration 2 qwen2.5
+
+# run 7 convince false, roasted article is in every process, iteration 5 qwen2.5. for the tasks only the original articlle is used.
+
+# run 8  convince false, roasted article is in every process, iteration 5 qwen2.5. for the tasks only the both articlles are used.

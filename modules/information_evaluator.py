@@ -93,7 +93,7 @@ Required format:
         response = self.generate_structured(
             response_model=Evaluation,
             messages=messages,
-            temperature=0
+            temperature=0.1
         )
 
         evaluation_reasoning = response.evaluation_reasoning

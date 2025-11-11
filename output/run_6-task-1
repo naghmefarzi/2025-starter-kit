@@ -1,0 +1,300 @@
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	1	Did Sam Panopoulos invent the Hawaiian pizza in 1962?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	2	Was there a recipe for Spanish pizza published in the Toronto Star in 1962?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	3	Did Sam Panopoulos, the inventor of Hawaiian pizza, grow up in Greece before moving to Canada?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	4	Were bacon, ham, and pineapple commonly used as pizza toppings in 1962?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	5	Was Sam Panopoulos' inspiration for the Hawaiian pizza derived from his experience cooking Chinese dishes?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	6	Did the Hawaiian pizza gain widespread popularity after it was invented by Sam Panopoulos in 1962?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	7	Was pineapple ever used as a pizza topping before 1962?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	8	Did Sam Panopoulos' brothers enjoy the Hawaiian pizza when it was first created?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	9	Was the term 'Spanish pizza' used in 1962 to describe a different type of pizza?
+msmarco_v2.1_doc_04_420132660	TREMA_UNH	run_6-task-1	10	Did Sam Panopoulos run a restaurant in the area outside Toronto, Canada, where he claimed to have invented the Hawaiian pizza?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	1	How do reputable medical websites like WebMD and MedicineNet.com view the health risks of instant noodles compared to the claims made in the article?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	2	What are the known health effects of Monosodium Glutamate (MSG) according to reputable medical studies and websites?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	3	What did Dr. Kuo's study reveal about the digestion of instant noodles compared to fresh ramen noodles?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	4	What are the known health risks associated with TBHQ according to reputable scientific studies?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	5	What do other reputable health reports say about the potential risks of consuming instant noodles regularly?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	6	Are there any reputable studies or reports linking the consumption of instant noodles with symptoms like headaches and rapid heartbeat?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	7	What do reputable medical studies say about the link between high sodium intake and the risk of heart disease?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	8	What do reputable health experts say about the potential digestive issues caused by consuming highly processed foods like instant noodles?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	9	What do reputable health reports say about the potential impact of consuming instant noodles on body weight and obesity?
+msmarco_v2.1_doc_06_1440134319	TREMA_UNH	run_6-task-1	10	What do reputable medical studies say about the potential link between consuming instant noodles and an increased risk of cancer?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	1	Are there consistent claims about superparamagnetic nanoparticles being used in vaccines across various sources?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	2	How frequently are vaccine-related deaths and adverse reactions reported in the given sources?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	3	Are there any scientific studies or credible reports supporting the claims that vaccines cause brain damage or neurodegenerative diseases?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	4	Is there any scientific evidence supporting the use of superparamagnetic nanoparticles in vaccine development and administration?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	5	Are there any credible sources or evidence supporting the claims of false flag attacks related to vaccines mentioned in the document?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	6	Is the claim about superparamagnetic nanoparticles being used in vaccines consistent across various types of media sources?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	7	Are the claims about vaccine-related deaths and adverse reactions supported by statements or data from official health organizations?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	8	Is there any scientific research supporting the use of superparamagnetic nanoparticles in vaccine development and administration?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	9	Are there any credible sources or evidence supporting the claims of false flag attacks related to vaccines mentioned in the document?
+msmarco_v2.1_doc_08_300872161	TREMA_UNH	run_6-task-1	10	Are there any official statements or data from health organizations supporting the claims of vaccine-related deaths and adverse reactions mentioned in the document?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	1	Are there any credible sources or reports confirming that any government or private sector is actively working on developing large-scale quantum computers?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	2	Which major technology companies are currently leading the development of large-scale quantum computers?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	3	How might quantum computing affect different industries according to recent market analysis and expert predictions?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	4	Which countries have established national initiatives or significant investments in quantum technology research?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	5	What is the current state of qubit count for major quantum computing platforms like IBM Q and Google Quantum?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	6	When do industry experts predict that large-scale quantum computers will be available commercially?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	7	Can you provide examples of significant partnerships in the field of quantum computing development?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	8	What are the key developments in post-quantum cryptography to protect against potential threats from large-scale quantum computers?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	9	Which private sector companies have made significant investments in quantum computing technology development?
+msmarco_v2.1_doc_15_116067546	TREMA_UNH	run_6-task-1	10	What are some potential non-financial applications of large-scale quantum computers based on current research and development efforts?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	1	Is there any independent verification for Nike's lawsuit against MSCHF over the 'Satan Shoes'?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	2	Are there any verified sources or screenshots of Lil Nas X's tweets regarding the 'Satan Shoes' controversy?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	3	Do other news outlets report the same details about Nike's lawsuit against MSCHF and Lil Nas X for the 'Satan Shoes'?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	4	Can we find independent sources confirming that all 666 pairs of the 'Satan Shoes' were indeed sold out within minutes?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	5	Are there any independent experts or analysts who have commented on Nike's lawsuit against MSCHF for the 'Satan Shoes'?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	6	Can we find any independent sources or statements from MSCHF confirming their claims about producing 60cc ink and one drop of human blood in each shoe?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	7	Is there any information available on whether Nike's lawsuit against MSCHF for the 'Satan Shoes' could potentially infringe on any copyrights?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	8	Are there any screenshots or verified copies of Lil Nas X's tweets regarding the 'Satan Shoes' controversy that can be cross-referenced?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	9	Can we find any reports or analyses discussing the potential impact of Nike's lawsuit against MSCHF for the 'Satan Shoes' on the company's reputation and sales?
+msmarco_v2.1_doc_21_861891150	TREMA_UNH	run_6-task-1	10	Are there any official statements or press releases from MSCHF regarding their involvement in the 'Satan Shoes' controversy and Nike's lawsuit?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	1	What evidence does Michelle Rennex provide to support the claims about Armie Hammer's alleged inappropriate behavior in the messages?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	2	How did Armie Hammer's decision to step away from the 'Shotgun Wedding' film project affect his career, according to the article?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	3	What specific steps did Michelle Rennex take to obtain and verify the screenshots and messages shared about Armie Hammer?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	4	How does the article connect Armie Hammer's past statements, such as his description of himself as a 'dominant lover,' to the current allegations against him?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	5	What does the article suggest about the broader cultural context surrounding Armie Hammer's alleged inappropriate behavior, as evidenced by his past statements and actions?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	6	According to the article, what specific online attacks did Armie Hammer face that led him to step away from his film project 'Shotgun Wedding'?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	7	What information does the article provide about Armie Hammer's marriage to Elizabeth Chambers, including when they married and why they decided to end their 10-year relationship?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	8	How did Michelle Rennex at Junkee present and verify the alleged messages shared about Armie Hammer, according to the article?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	9	What does the article suggest about the current trend of re-examining public figures' past statements and actions in light of new allegations?
+msmarco_v2.1_doc_22_1648697797	TREMA_UNH	run_6-task-1	10	According to the article, what specific consequences did Armie Hammer face in his professional life as a result of stepping away from the 'Shotgun Wedding' film project?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	1	What is Andrew Giuliani's position on criminal justice reform?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	2	Does Andrew Giuliani have any official statements or policy proposals related to climate change?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	3	What are Andrew Giuliani's views on healthcare reform, if mentioned in the provided text?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	4	What specific policies does Andrew Giuliani propose for criminal justice reform?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	5	Does Andrew Giuliani have any official statements or policy proposals related to education reforms?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	6	What is Andrew Giuliani's view on the current state of criminal justice in America?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	7	Does Andrew Giuliani have any official statements or policy proposals related to immigration reforms?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	8	What specific measures does Andrew Giuliani propose for improving the criminal justice system?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	9	Does Andrew Giuliani have any official statements or policy proposals related to environmental policies?
+msmarco_v2.1_doc_25_481628070	TREMA_UNH	run_6-task-1	10	What is Andrew Giuliani's opinion on the use of police force in criminal justice?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	1	How does relying solely on social media anecdotes impact the credibility of an article?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	2	What are the potential drawbacks of using social media as a primary source for news and information in journalism?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	3	How has the rise of social media influenced the speed and nature of breaking news reporting, and what are the implications for news credibility?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	4	Is it appropriate to base a significant portion of an article’s content on anecdotes shared on social media, and why or why not?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	5	How does the process of disintermediation affect individuals' ability to evaluate the credibility of online information?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	6	What are some common challenges and strategies that journalists face when verifying information sourced from social media for news articles?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	7	How has the rise of citizen journalism through social media affected the public's trust and confidence in traditional news sources?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	8	What are some common cognitive biases that can affect individuals' ability to judge the credibility of information found on social media?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	9	How does the prevalence of fake news on social media platforms challenge traditional journalistic standards and practices?
+msmarco_v2.1_doc_25_501708725	TREMA_UNH	run_6-task-1	10	Can the integration of user-generated content from social media enhance the credibility of journalism, or does it undermine it?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	1	Is this article part of a series or a standalone piece?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	2	Has the Pentagon officially established an Unidentified Aerial Phenomena Task Force (UAPTF)?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	3	Are the sources cited in the article from reputable government or media outlets?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	4	Are there any previous reports or studies on unidentified aerial phenomena (UAP) that predate this article?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	5	Have other countries established similar programs for investigating unidentified aerial phenomena (UAP)?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	6	Have there been any specific findings or reports from the UAPTF that have been made public?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	7	Are there any known cases where unidentified aerial phenomena (UAP) have posed a threat to national security?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	8	Have there been any public statements or reports from military officials regarding the UAPTF?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	9	Are there any legal or regulatory frameworks governing the investigation and reporting of unidentified aerial phenomena (UAP)?
+msmarco_v2.1_doc_25_502424913	TREMA_UNH	run_6-task-1	10	Are there any ongoing or planned public disclosures related to the UAPTF?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	1	"Philipp Budeikin Blue Whale challenge arrest charges" - Are there official statements from law enforcement supporting claims of weak evidence in his case?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	2	Is there credible data supporting Mursaliyeva's claim of at least 200 suicides being linked to the Blue Whale challenge?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	3	Are there official records or reports detailing the court’s decision in Budeikin's case and its reasoning for finding him sane?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	4	Can we find credible sources supporting Mursaliyeva's claim of at least 200 suicides being linked to the Blue Whale challenge?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	5	Are there any official records or reports from Budeikin’s trial that detail the court's reasoning for finding him sane?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	6	Is it accurate that Budeikin was arrested and held in Kresty Prison, Saint Petersburg? Can we find more detailed information about his arrest?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	7	Are there any official documents from Budeikin’s trial available that detail the court's reasoning for finding him sane?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	8	Can we confirm the location of Budeikin's arrest and provide more detailed information about it?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	9	Are there any official documents from Budeikin’s trial available that detail the court's reasoning for finding him sane?
+msmarco_v2.1_doc_34_2529216	TREMA_UNH	run_6-task-1	10	Can we confirm the location of Budeikin's arrest and provide more detailed information about it?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	1	Who were the key figures involved in helping Carlos Ghosn escape from Japan?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	2	Are there conflicting reports about whether Ghosn used fake or legitimate travel documents during his escape?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	3	What was the sequence of events that led to Carlos Ghosn leaving Japan for Lebanon?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	4	How reliable are the reports claiming there were significant security loopholes at Japanese airports that Ghosn's team took advantage of?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	5	What legal consequences, if any, have been faced by the individuals mentioned as helping Carlos Ghosn escape from Japan?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	6	Can we confirm that Ghosn traveled via a train to Osaka, then boarded a private plane through Russian airspace before reaching Lebanon?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	7	Are there any conflicting reports regarding whether Carlos Ghosn wore a hat and surgical mask during his escape from Japan?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	8	What is the extent of George-Antoine Zayek's involvement in helping Carlos Ghosn escape from Japan, according to multiple sources?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	9	Have there been any official statements or investigations into the security lapses at Japanese airports that were allegedly exploited by Ghosn's team?
+msmarco_v2.1_doc_34_7751734	TREMA_UNH	run_6-task-1	10	How accurate are the reports stating that Ghosn traveled for 12 hours on a private plane through Russian airspace during his escape from Japan?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	1	Are there known collaborations between Old Dominion University researchers, such as Andrei Pakhomov, and other institutions or governments in the field of microwave weapons research?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	2	What is the current status of research into high-energy microwaves as a weapon, particularly regarding their physical and psychological impacts on targets?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	3	Have Old Dominion University researchers, such as Andrei Pakhomov, published any studies or findings related to microwave weapons or psychotronic weapons?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	4	How credible are the claims that Russian military research into directed energy and psychotronic weapons could be linked to the Havana syndrome incidents involving US diplomats?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	5	What is the methodology behind any studies conducted by Old Dominion University researchers, such as Andrei Pakhomov, regarding the effects of microwaves on human health and behavior?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	6	What are the known long-term physical and psychological effects of prolonged exposure to high-energy microwaves, as studied by researchers like Andrei Pakhomov at Old Dominion University?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	7	Have there been any known collaborations between Old Dominion University researchers, such as Andrei Pakhomov, and government agencies in the research of microwave weapons?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	8	What are the current developments in non-lethal weapon research that involve the use of microwaves, as explored by researchers like Andrei Pakhomov?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	9	How reliable is the initial JAMA report on the Havana syndrome incidents, and what are the main points of skepticism raised by doctors and scientists regarding its findings?
+msmarco_v2.1_doc_35_441326441	TREMA_UNH	run_6-task-1	10	What is the historical context of research into microwave weapons, including their development and use in military conflicts, as documented by Old Dominion University researchers like Andrei Pakhomov?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	1	What are Zoe Brennan-Krohn's recent statements about the ACLU's stance on Britney Spears' conservatorship and Jamie Spears' financial management claims?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	2	Where can we find reliable sources confirming or refuting the reported net worth of $60 million for Britney Spears?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	3	Can we find court documents or financial records confirming that Jamie Spears has managed Britney Spears' finances since 2008?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	4	What are the specific restrictions on Britney Spears' decision-making abilities according to the terms of her conservatorship?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	5	Can we find recent media reports or photos showing when Britney Spears last appeared in public?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	6	Can we find court records or filings confirming that the conservatorship for Britney Spears has been renewed multiple times?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	7	Can we find financial statements or reports confirming that Jamie Spears is managing his daughter's finances?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	8	Can we find court documents or filings confirming that the conservatorship for Britney Spears was established more than 10 years ago?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	9	Can we find recent legal filings or court documents confirming that Britney Spears cannot make major decisions about her life?
+msmarco_v2.1_doc_35_1300032609	TREMA_UNH	run_6-task-1	10	What are the recent statements from organizations like the ACLU regarding their stance on Britney Spears' conservatorship?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	1	Is there any credible source confirming the death of a 10-year-old Italian girl due to the TikTok blackout challenge in 2021?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	2	What are the potential health risks associated with the TikTok blackout challenge according to medical experts?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	3	Are there any reports of similar challenges like the TikTok blackout challenge that have led to fatal outcomes?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	4	How do social media platforms like TikTok verify the age of their users, especially in cases where minors might access and participate in dangerous challenges?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	5	What actions did authorities take after the death of a 10-year-old girl due to the TikTok blackout challenge in Italy?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	6	Has the TikTok blackout challenge spread to other social media platforms besides TikTok, and if so, how widespread is it?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	7	How can users report instances of the TikTok blackout challenge or similar dangerous trends on the platform?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	8	What are some psychological factors that might explain why children participate in dangerous challenges like the TikTok blackout challenge?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	9	Are there any reports of similar incidents involving minors participating in dangerous online challenges besides the TikTok blackout challenge?
+msmarco_v2.1_doc_38_227081897	TREMA_UNH	run_6-task-1	10	What steps can parents take to educate themselves and their children about the dangers of online challenges like the TikTok blackout challenge?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	1	What are the official charges filed against William 'Rick' Singer in Operation Varsity Blues?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	2	Who were some of the key individuals or entities involved in the Operation Varsity Blues scandal besides William 'Rick' Singer?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	3	How much money did parents pay to William 'Rick' Singer for his services in Operation Varsity Blues, and what were these payments used for?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	4	What is the maximum potential sentence that William 'Rick' Singer could receive for his role in Operation Varsity Blues, and has he been sentenced yet?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	5	How many students were impacted by William 'Rick' Singer’s fraudulent activities in Operation Varsity Blues?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	6	What specific methods did William 'Rick' Singer use to manipulate test scores and college admissions in Operation Varsity Blues?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	7	How much money, on average, did each parent pay to William 'Rick' Singer for his services in Operation Varsity Blues?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	8	When and where was William 'Rick' Singer first arrested in connection with the Operation Varsity Blues scandal?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	9	What was the total amount of money that William 'Rick' Singer received from his clients for his services in Operation Varsity Blues, and how was this money used?
+msmarco_v2.1_doc_39_1014551192	TREMA_UNH	run_6-task-1	10	What evidence led to William 'Rick' Singer being arrested in connection with the Operation Varsity Blues scandal?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	1	Are there any peer-reviewed studies supporting the health benefits claimed by recreational oxygen users?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	2	Can you find any peer-reviewed research validating the claims of reduced stress and increased energy from using oxygen bars?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	3	Are there any well-controlled studies showing that flavored oxygen from oxygen bars can alleviate hangovers and headaches?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	4	Can you find any peer-reviewed research supporting the claim that flavored oxygen from oxygen bars can reduce stress and increase alertness?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	5	Are there any peer-reviewed studies indicating that flavored oxygen from oxygen bars can lessen the effects of sinus problems?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	6	Can you find any well-controlled studies supporting the claim that flavored oxygen from oxygen bars can be relaxing?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	7	Are there any peer-reviewed studies showing that flavored oxygen from oxygen bars can improve overall well-being?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	8	Can you find any well-controlled studies supporting the claim that flavored oxygen from oxygen bars can enhance cognitive function?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	9	Are there any peer-reviewed studies indicating that flavored oxygen from oxygen bars can improve physical performance?
+msmarco_v2.1_doc_39_1165221603	TREMA_UNH	run_6-task-1	10	Can you find any well-controlled studies supporting the claim that flavored oxygen from oxygen bars can boost mood and mental clarity?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	1	What specific studies cited by GreenState show that cannabinoids can induce apoptosis in cancer cells while minimizing damage to normal tissue?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	2	Can you confirm which specific studies cited by GreenState were funded by the US National Institute of Health or other major governmental bodies, and what their findings were regarding cancer cell death?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	3	What types of cancers have been studied for their response to cannabinoids according to GreenState's sources? Are there any specific limitations or conditions under which these studies were conducted?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	4	How many human clinical trials have been conducted based on the findings from the studies mentioned in GreenState's article, and what are their results compared to traditional treatments?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	5	According to the studies cited by GreenState, which specific cannabinoids (e.g., THC, CBD) have been shown to induce apoptosis in cancer cells, and what are the mechanisms behind their effectiveness?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	6	What is the current status of research on using cannabinoids as a potential treatment for various types of cancer based on the studies cited by GreenState?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	7	How do the findings from the animal studies, such as those conducted at Madrid's Complutense University, translate to potential human applications for cannabinoids in cancer treatment?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	8	What are the safety profiles and recommended dosages of cannabinoids as determined by the studies cited by GreenState, particularly those involving direct intracranial administration?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	9	According to the studies cited by GreenState, what are the potential side effects and drawbacks of using cannabinoids as a treatment for various types of cancer?
+msmarco_v2.1_doc_41_1960853470	TREMA_UNH	run_6-task-1	10	What is the evidence from the study mentioned by GreenState that shows the effectiveness of GW Pharmaceuticals' cannabis-based drug in treating glioblastoma multiforme, and how does it compare to other treatments?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	1	What specific quotes from Fiona Broome about the Mandela Effect can be found in academic or reputable sources?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	2	When and by whom was the term 'Mandela Effect' first coined, and what is its original source?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	3	Are there any scientific studies or peer-reviewed articles that support the existence and validity of the Mandela Effect?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	4	Do the examples of the Mandela Effect provided by Healthline have supporting evidence from other reputable sources?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	5	What psychological theories or studies explain why people might remember events incorrectly, such as those described in the Mandela Effect?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	6	Is the Mandela Effect accepted by academic and scientific communities as a legitimate phenomenon, or is it considered pseudoscience?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	7	Has the Mandela Effect been covered in major media outlets, and if so, what was the nature of that coverage?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	8	Are there any real-world applications or studies related to the Mandela Effect in fields such as psychology or cognitive science?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	9	Can you provide specific quotes from Fiona Broome about the Mandela Effect in academic or reputable sources?
+msmarco_v2.1_doc_42_654618974	TREMA_UNH	run_6-task-1	10	Are there any other sources that corroborate the examples of the Mandela Effect provided by Healthline?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	1	Have Khara Ramos and Christof Koch collaborated on any neuroscience research projects?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	2	Is there any known collaboration or overlap between Khara Ramos' research at NINDS and Christof Koch's work on the neural basis of consciousness?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	3	Has Christof Koch published any recent research papers involving Khara Ramos in her capacity at NINDS?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	4	Are there any shared research interests or potential collaborative projects between Khara Ramos at NINDS and Christof Koch's work at the Allen Institute for Brain Science?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	5	Does Khara Ramos' research at NINDS align with Christof Koch's work on the neural basis of consciousness?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	6	Are there any joint initiatives or projects between Khara Ramos at NINDS and Christof Koch's work at the Allen Institute for Brain Science?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	7	Does Christof Koch have any direct involvement or connection to NINDS that might involve Khara Ramos in their research?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	8	Are there any ongoing or planned collaborations between Khara Ramos at NINDS and Christof Koch's work at the Allen Institute for Brain Science?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	9	Could Khara Ramos' research at NINDS benefit from Christof Koch's expertise on the neural basis of consciousness?
+msmarco_v2.1_doc_47_1430382251	TREMA_UNH	run_6-task-1	10	Are there any overlapping areas of interest between Khara Ramos at NINDS and Christof Koch's work on the neural basis of consciousness that could lead to collaboration?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	1	Has Citibank had any previous instances of large-scale payment errors like the one described in the article?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	2	Is $175 million an unusually large or small amount for Citibank to pay in interest on Revlon's loan, and does this suggest it might have been a mistake or could be intentional?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	3	Are there any other news sources reporting on this incident that provide additional details or contradict the claims made in the CNN Business article?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	4	Does the article provide any evidence or details supporting Citibank's claim that the $175 million payment was a clerical error, and not intentional?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	5	Is $900 million an unusually large or small amount for Citibank to pay in interest on Revlon's loan, and does this suggest it might have been a mistake or could be intentional?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	6	Are there any statements or responses from Brigade Capital in the article that contradict Citibank's claim about the payment being an operational mistake?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	7	Is it reasonable for the court to order Brigade Capital to pay back the money or not withdraw or dispose of it, given Citibank's claim that the payment was an operational mistake?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	8	Are there any financial experts or industry insiders quoted in the article who provide additional context on Citibank's payment error and its implications?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	9	Is the timeline provided in the article (quick discovery and immediate legal action) consistent with standard procedures for handling large-scale payment errors at Citibank?
+msmarco_v2.1_doc_48_273997000	TREMA_UNH	run_6-task-1	10	Are there any statements or reports from regulatory bodies or financial authorities mentioned in the article that provide additional context on Citibank's payment error and its implications?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	1	Has any peer-reviewed study confirmed that NASA's ANITA experiment has detected evidence of a parallel universe?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	2	What unusual phenomenon did the ANITA experiment observe regarding high-energy neutrinos in Antarctica?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	3	Are there any peer-reviewed studies that support the hypothesis of a parallel universe with reverse physics based on ANITA's findings?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	4	Does any peer-reviewed study published after the ANITA experiment confirm that the Standard Model of particle physics cannot explain its findings?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	5	Is the hypothesis of a parallel universe with reverse physics widely accepted among physicists based on ANITA's findings?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	6	Are there any peer-reviewed studies that document the debates among physicists regarding the explanation for ANITA's abnormal neutrino detections?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	7	Are there any peer-reviewed studies that support alternative explanations such as updated models about Antarctic ice based on ANITA's findings?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	8	Are there any peer-reviewed studies or credible sources that document the discussions about the radical implications of ANITA's findings?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	9	Does any peer-reviewed study published after the ANITA experiment support the idea that its findings do not indicate a parallel universe?
+msmarco_v2.1_doc_48_515083157	TREMA_UNH	run_6-task-1	10	Are there any peer-reviewed studies or credible sources that support the scenarios proposed by researchers, such as updated models about Antarctic ice or decaying super heavy dark matter?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	1	Are there any independent sources that support Ellen Fantini's claims of increasing hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	2	Can you find any independent sources that verify Ellen Fantini's claims about rising hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	3	Are there any independent sources that can verify Ellen Fantini's claims about increasing hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	4	Can you find any independent sources that support Ellen Fantini's claims about rising hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	5	Are there any independent sources that support Ellen Fantini's claims of increasing hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	6	Can you find any independent sources that verify Ellen Fantini's claims about rising hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	7	Are there any independent sources that can verify Ellen Fantini's claims about increasing hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	8	Can you find any independent sources that support Ellen Fantini's claims about rising hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	9	Are there any independent sources that support Ellen Fantini's claims of increasing hostility towards churches in France?
+msmarco_v2.1_doc_48_515287844	TREMA_UNH	run_6-task-1	10	Can you find any independent sources that verify Ellen Fantini's claims about rising hostility towards churches in France?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	1	What is Belle Delphine's estimated net worth according to reliable sources?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	2	How much money does Belle Delphine earn from her social media platforms like Patreon and YouTube?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	3	Is there any information on Belle Delphine's income from her online store mentioned in the articles?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	4	How does Belle Delphine earn money from Snapchat premium subscribers?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	5	What are the different tiers of Patreon membership for Belle Delphine and what benefits do they offer?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	6	How much did Belle Delphine earn from Patreon at its peak?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	7	What are some lesser-known facts about Belle Delphine's earnings mentioned in the articles?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	8	How does Belle Delphine's income from her baby doll modeling contribute to her overall net worth?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	9	What are some of the expenses Belle Delphine incurs as part of her online business mentioned in the articles?
+msmarco_v2.1_doc_48_730773621	TREMA_UNH	run_6-task-1	10	How does Belle Delphine's income from her social media platforms compare to other influencers in the same niche?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	1	Did The New York Times report on a Twitter hack and provide specific details about it?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	2	Did The New York Times report that a Twitter hack was carried out by Chinese intelligence services and provide evidence for this claim?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	3	Does The New York Times often use unnamed sources in their articles and reports? If so, how does this affect the reliability of the information provided?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	4	Are there any other indications or evidence in The New York Times articles suggesting that the Twitter hack was carried out by a state-sponsored entity?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	5	Did The New York Times provide any specific technical details or methods used in the Twitter hack as reported by unnamed sources?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	6	Did The New York Times report that none of the stolen Twitter data from the hack was found on the dark web? If so, what evidence supports this claim?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	7	Did The New York Times report that U.S. intelligence services were involved in investigating the Twitter hack and provide specific details?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	8	Did The New York Times report a specific date for when the Twitter hack occurred and provide corroborating evidence from other sources?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	9	Did The New York Times report any significant consequences or effects on Twitter users as a result of the alleged hack by Chinese intelligence services?
+msmarco_v2.1_doc_48_1289995263	TREMA_UNH	run_6-task-1	10	Did The New York Times provide any additional sources or evidence in their articles suggesting that the Twitter hack was carried out by state-sponsored hackers?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	1	How might the proposed Super League impact smaller clubs and leagues in Europe?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	2	What financial benefits does Florentino Perez claim the Super League would bring to top European clubs?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	3	What measures has UEFA threatened to take if the Super League goes ahead as planned?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	4	How did Florentino Perez and other club leaders address fan reactions to their proposed Super League?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	5	What legal challenges might the proposed Super League face according to Florentino Perez's statements?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	6	According to Florentino Perez, how does the proposed Super League aim to help overcome the financial difficulties faced by football clubs?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	7	How might the proposed Super League be perceived as a threat to the tradition and history of European football by its critics?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	8	What role do FIFA and other international governing bodies play in the proposed Super League's plans, according to Florentino Perez?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	9	What potential impacts does the proposed Super League have on players' careers and overall player welfare, according to Florentino Perez?
+msmarco_v2.1_doc_52_1666095905	TREMA_UNH	run_6-task-1	10	What environmental concerns might arise from the proposed structure of the Super League, according to Florentino Perez's statements?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	1	Do digital transactions in a cashless society typically include advanced security measures like encryption and two-factor authentication?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	2	Did the Bank of England implement any specific digital security measures like encryption and two-factor authentication in their 2019 plans for a cashless society?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	3	Do banks commonly use encryption and two-factor authentication to secure customer data in digital transactions?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	4	Do financial institutions generally use advanced security measures like encryption and two-factor authentication in digital transactions?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	5	Do banks typically implement robust security protocols like encryption and two-factor authentication in their digital transactions?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	6	Do financial institutions commonly use advanced security measures like encryption and two-factor authentication in their digital transactions?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	7	Do banks typically use robust security protocols like encryption and two-factor authentication in their digital transactions?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	8	Do financial institutions typically implement advanced security measures like encryption and two-factor authentication in their digital transactions?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	9	Do banks commonly use encryption and two-factor authentication to secure customer data in digital transactions?
+msmarco_v2.1_doc_54_304836636	TREMA_UNH	run_6-task-1	10	Do financial institutions typically use advanced security measures like encryption and two-factor authentication in their digital transactions?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	1	Does the full text of 'Birds Aren’t Real' mention how it originated?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	2	Does the full text of 'Birds Aren’t Real' mention a specific target audience or demographic it aims to reach?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	3	Does the full text of 'Birds Aren’t Real' mention methods used for spreading the conspiracy theory?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	4	Does the full text of 'Birds Aren’t Real' mention any specific evidence or claims supporting its assertions?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	5	Does the full text of 'Birds Aren’t Real' mention any connections to other conspiracy theories or political movements?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	6	Does the full text of 'Birds Aren’t Real' mention any recent developments or updates regarding the conspiracy theory?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	7	Does the full text of 'Birds Aren’t Real' mention any potential impacts on public perception regarding birds?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	8	Does the full text of 'Birds Aren’t Real' mention any commercial activities or revenue streams related to the conspiracy theory?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	9	Does the full text of 'Birds Aren’t Real' mention any future plans or goals for this conspiracy theory?
+msmarco_v2.1_doc_54_1547893878	TREMA_UNH	run_6-task-1	10	Does the full text of 'Birds Aren’t Real' mention the number of followers or supporters it has gained?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	1	What evidence supports the claim that Apple's iOS app ecosystem has high switching costs for users?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	2	How does Apple's control over its App Store contribute to high switching costs for developers and users in the iOS app ecosystem?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	3	What does the House antitrust subcommittee report indicate about Apple's market power in the iOS app distribution market?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	4	According to the House antitrust subcommittee report, what factors contribute to Apple's high switching costs in the iOS app distribution market?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	5	What does the House antitrust subcommittee report suggest about Apple's ability to exclude rivals in the iOS app distribution market?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	6	How does Apple's control over its App Store impact the market entry of new competitors in the iOS app distribution market?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	7	What does the House antitrust subcommittee report indicate about Apple's market power over app distribution on iOS devices?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	8	According to the House antitrust subcommittee report, what does Apple do to maintain its dominance in the iOS app distribution market?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	9	What does the House antitrust subcommittee report suggest about the likelihood of successful market entry to contest Apple's dominance in iOS app distribution?
+msmarco_v2.1_doc_55_248024230	TREMA_UNH	run_6-task-1	10	According to the House antitrust subcommittee report, what does Apple do to ensure its dominance in app distribution on iOS devices?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	1	What scientific studies support the claim that eating jackfruit can help manage blood sugar levels?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	2	Does scientific evidence support the claim that jackfruit's high fiber content promotes digestive health?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	3	Are there any scientific studies that support the claim that jackfruit has significant antioxidant properties?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	4	What scientific studies support the claim that jackfruit has anti-inflammatory properties?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	5	Are there any studies that support the claim that eating jackfruit can aid in weight loss?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	6	What scientific studies support the claim that jackfruit can improve heart health?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	7	Are there any studies that support the claim that jackfruit has potential anti-cancer benefits?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	8	What scientific studies support the claim that jackfruit can boost the immune system?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	9	Are there any studies that support the claim that jackfruit can improve skin health?
+msmarco_v2.1_doc_57_933363597	TREMA_UNH	run_6-task-1	10	What scientific studies support the claim that jackfruit can benefit bone health?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	1	What was the primary goal or message behind the 2019 'Storm Area 51, They Can't Stop All of Us' event, and how did it reflect broader cultural trends?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	2	Why has the official name 'Nevada Test and Training Range at Groom Lake' not stopped the widespread use of the term 'Area 51' in popular culture, and what does this reveal about the site's cultural significance?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	3	How have the conspiracy theories surrounding Area 51 evolved since the 1950s, and what factors have contributed to their persistence in popular culture?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	4	What was the immediate and long-term impact of the 2019 'Storm Area 51, They Can't Stop All of Us' event on public perception regarding Area 51?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	5	Why has there been such a strong emphasis on maintaining secrecy around Area 51, and what are the potential consequences of this secrecy for public understanding?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	6	How have conspiracy theories surrounding Area 51 influenced public discourse and media coverage, and what impact do they have on government transparency efforts?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	7	What were the primary motivations and goals of the organizers behind the 2019 'Storm Area 51, They Can't Stop All of Us' event, and how did they hope to achieve their objectives?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	8	What historical context led to the official naming of the Nevada Test and Training Range as 'Area 51', and how did this choice contribute to its subsequent cultural significance?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	9	How have conspiracy theories surrounding Area 51 contributed to maintaining public interest and media coverage, and what impact do they have on government efforts to declassify information?
+msmarco_v2.1_doc_58_748655897	TREMA_UNH	run_6-task-1	10	What are the potential benefits and drawbacks of maintaining secrecy around Area 51, and how do these factors balance against the public's right to know?
