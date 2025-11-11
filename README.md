@@ -2,8 +2,21 @@
 This version has been modified to work with Ollama instead of OpenAI's API.
 
 1. Install Ollama: [installation instructions]
-2. Download required models: `ollama pull <model-name>`
+2. Download required models: `ollama pull qwen2.5:7b`
 3. Update `.env` configuration
+
+## Key Modifications
+
+This implementation extends the official starter kit with:
+
+- **Local LLM via Ollama**: Uses Qwen 2.5:7B instead of OpenAI API for cost-free, private operation
+- **Adversarial Critique Module**: Implements two modes for generating critical perspectives:
+  - Balanced critique: Identifies credibility gaps while acknowledging sound reporting
+  - Aggressive "convince false": Attempts to debunk the entire article to explore maximum skepticism
+- **Structured Output**: Enforces Pydantic models across all agents for type safety and validation
+- **Enhanced Query Generation**: Generates 5 queries from the original article and 5 from the adversarial critique per iteration
+
+See `paper.tex` for detailed methodology and system architecture.
 
 # TREC 2025 DRAGUN Starter Kit
 
@@ -11,8 +24,11 @@ This repository is a starter kit for the [**TREC 2025 DRAGUN Track**](https://tr
 
 ```mermaid
 flowchart TD
-    A[One News Article] --> B["Query Generator"]
-    B --> C[["(More) Generated Queries"]]
+    A[One News Article] --> A1[Adversarial Generator]
+    A1 --> A2[[Balanced Critique OR Aggressive Debunk]]
+    A --> B["Query Generator"]
+    A2 --> B
+    B --> C[["5 Queries from Original + 5 from Adversarial Article"]]
     C --> D[Segment Retriever]
     D --> E[[Retrieved Segments]]
     E --> F[Information Evaluator]
